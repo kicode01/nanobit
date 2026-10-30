@@ -1,20 +1,37 @@
 {
   "name": "nanobit",
   "version": "1.0.0",
-  "description": "Interactive 3D particle dust and optical depth gallery powered by WebGL2 and monocular depth AI.",
+  "description": "Interactive 3D particle dust and optical depth gallery powered by WebGL2 and monocular neural depth estimation.",
   "main": "index.html",
+  "homepage": "https://nanobit.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kicode01/nanobit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kicode01/nanobit/issues"
+  },
   "private": true,
   "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
     "test": "node .tools/audit.js",
-    "start": "npx serve ."
+    "audit": "node .tools/audit.js"
   },
   "keywords": [
-    "webgl",
+    "nanobit",
+    "webgl2",
     "particles",
+    "particle-system",
+    "gpgpu",
     "depth-anything",
-    "three-dimensional",
+    "monocular-depth",
     "creative-coding",
-    "ai-art"
+    "three-dimensional",
+    "generative-art",
+    "optical-depth",
+    "fluid-dynamics",
+    "60fps"
   ],
   "author": "kicode01",
   "license": "UNLICENSED"

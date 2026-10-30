@@ -1,16 +1,30 @@
+# Dependencies & Tooling
 node_modules/
 .tools/
 !.tools/audit.js
 .workbuddy-ai/
 research/
+
+# Distribution and release archives
+dist/
+*.zip
+*.tar.gz
+
+# Root and test screenshot artifacts (whitelist assets/)
 *.png
 *.jpg
+*.jpeg
+*.gif
+!assets/**
+
+# Temporary and backup source files
 *.backup.html
 *.pre_art.html
+loess.html
 .DS_Store
 Thumbs.db
 *.log
 
+# Deployment and secrets
 .vercel
 .env*
-loess.html
