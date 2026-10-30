@@ -1,0 +1,7 @@
+node_modules/
+.tools/node_modules/
+*.backup.html
+*.pre_art.html
+.DS_Store
+Thumbs.db
+*.log

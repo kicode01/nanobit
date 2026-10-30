@@ -1,0 +1,20 @@
+{
+  "name": "nanobit",
+  "version": "1.0.0",
+  "description": "Interactive 3D particle dust and optical depth gallery powered by WebGL2 and monocular depth AI.",
+  "main": "index.html",
+  "scripts": {
+    "test": "node .tools/audit.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "webgl",
+    "particles",
+    "depth-anything",
+    "three-dimensional",
+    "creative-coding",
+    "ai-art"
+  ],
+  "author": "kicode01",
+  "license": "MIT"
+}
