@@ -25,4 +25,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Diagnostic Inspection Modes**: Cycle through depth maps, surface occlusion, surface normal fields, and point density telemetry (`d` key).
 - **Studio Export**: Single-click 4K canvas capture (`p` key) with transparency preservation.
 - **Zero-Dependency Architecture**: 100% self-contained client-side application running completely in-browser without external server reliance or telemetry.
-- **Automated CI/CD & Releases**: GitHub Actions workflow for automated releases and Vercel edge deployment.
+- **Automated CI/CD & Releases**: GitHub Actions workflow for automated releases, standalone offline zip packaging, and Vercel edge deployment.

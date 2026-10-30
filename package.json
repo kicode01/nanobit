@@ -16,7 +16,8 @@
     "dev": "npx serve .",
     "start": "npx serve .",
     "test": "node .tools/audit.js",
-    "audit": "node .tools/audit.js"
+    "audit": "node .tools/audit.js",
+    "package": "powershell -Command \"Compress-Archive -Path index.html, assets, LICENSE, README.md, vercel.json -DestinationPath nanobit-v1.0.0-standalone.zip -Force\""
   },
   "keywords": [
     "nanobit",

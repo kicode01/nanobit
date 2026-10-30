@@ -9,15 +9,23 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create Standalone Offline Bundle
+        run: |
+          mkdir -p dist
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          zip -r "dist/nanobit-${TAG_NAME}-standalone.zip" index.html assets LICENSE README.md vercel.json
+          echo "Created standalone archive: dist/nanobit-${TAG_NAME}-standalone.zip"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          files: dist/*.zip
           generate_release_notes: true
           draft: false
           prerelease: false

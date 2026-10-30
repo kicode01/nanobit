@@ -24,7 +24,7 @@
   <a href="#-visual-tour">Visual Tour</a> •
   <a href="#-controls--shortcuts">Controls</a> •
   <a href="#-architecture">Architecture</a> •
-  <a href="#-releases--versioning">Releases</a> •
+  <a href="#-releases--offline-distribution">Releases & Distribution</a> •
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-deployment">Deployment</a>
 </p>
@@ -162,24 +162,36 @@ Toggle diagnostic modes (**`d`**) to inspect:
 
 ---
 
-## 📦 Releases & Versioning
+## 📦 Releases & Offline Distribution
 
 ### Can a Web-Only Project Have GitHub Releases?
-**Yes, absolutely!** Web projects, creative-coding engines, and single-page applications utilize GitHub Releases to:
+**Yes, absolutely!** Top-tier web projects, creative-coding engines, and single-page applications utilize GitHub Releases to:
 
-1. **Tag Immutable Semantic Milestones**: Pin stable milestones (`v1.0.0`, `v1.1.0`) in git history to guarantee reproducibility and point-in-time stability.
-2. **Publish Structured Changelogs**: Provide users, collaborators, and star-gazers with transparent release notes documenting shader updates, performance optimizations, and newly curated artworks.
-3. **Trigger Automated CI/CD Deployments**: Pushing a release tag automatically triggers continuous delivery pipelines to production edge networks (e.g. Vercel).
-4. **Permanent Audit Trail**: Maintain verifiable version history for security, rollback capabilities, and intellectual property protection.
+1. **Distribute Standalone Offline Bundles**: Because `nanobit` is 100% self-contained client-side code, every GitHub Release attaches a standalone zip archive (`nanobit-v1.0.0-standalone.zip`). Anyone can download it, extract it, and run the complete 3D gallery completely offline—no internet, no npm, and no cloud required.
+2. **Tag Immutable Semantic Milestones**: Pin stable milestones (`v1.0.0`, `v1.1.0`) in git history to guarantee reproducibility and point-in-time stability.
+3. **Publish Detailed Changelogs**: Provide users, collaborators, and star-gazers with transparent release notes documenting shader improvements, performance milestones, and newly curated artworks.
+4. **Trigger Automated CI/CD Deployments**: Pushing a release tag automatically triggers our GitHub Actions pipeline, packaging production assets and ensuring code integrity.
 
-### Creating a New Release
-To publish a new release:
+### Downloading the Offline Standalone Release
+Grab the latest release from the [**GitHub Releases Page**](https://github.com/kicode01/nanobit/releases):
 ```bash
-# Create and push a semantic version tag
+# 1. Download and extract the archive
+unzip nanobit-v1.0.0-standalone.zip
+
+# 2. Open index.html in any modern browser
+open index.html
+```
+
+### Packaging & Publishing a Release
+```bash
+# 1. Package the standalone bundle locally
+npm run package
+
+# 2. Create and push a semantic version tag
 git tag -a v1.0.0 -m "Release v1.0.0 - Production Launch"
 git push origin v1.0.0
 ```
-Our automated GitHub Action [`.github/workflows/release.yml`](.github/workflows/release.yml) publishes the release with generated changelog notes automatically.
+Our automated GitHub Action [`.github/workflows/release.yml`](.github/workflows/release.yml) packages the offline archive and publishes the release with generated notes automatically.
 
 ---
 
