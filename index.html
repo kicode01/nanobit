@@ -63,21 +63,33 @@
   .trim.br{bottom:12px;right:12px;border-bottom-width:1px;border-right-width:1px}
 
   /* ---------- brand: letterpressed into the margin ---------- */
-  #brand{top:0;left:0;padding:24px 28px;pointer-events:none}
+  #brand{
+    top:0;left:0;padding:24px 28px;pointer-events:none;
+    display:flex;flex-direction:column;align-items:flex-start;
+  }
+  #brand .brand-row{
+    display:inline-flex;align-items:center;gap:10px;line-height:1;
+  }
+  #brand .nano-cube-icon{
+    width:22px;height:22px;flex-shrink:0;
+    filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    transform:translateY(-2px);
+  }
   #brand .wm{
-    font-family:var(--serif);font-size:32px;line-height:1;
-    letter-spacing:-.02em;color:var(--fg);font-weight:400;
+    font-family:var(--serif);font-size:26px;line-height:1;
+    letter-spacing:-.015em;color:var(--fg);font-weight:400;
   }
-  #brand .sub{
-    display:flex;align-items:center;gap:8px;margin-top:8px;
-    font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  #brand .by{
+    margin-top:6px;font-family:var(--sans);font-size:8px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    opacity:.90;line-height:1.2;
   }
-  #brand .sub .by{color:var(--accent);opacity:.95;letter-spacing:.13em}
+  #brand #status{
+    margin-top:4px;font-family:var(--sans);font-size:8px;font-weight:400;
+    letter-spacing:.20em;text-transform:uppercase;color:var(--dim);
+    opacity:.75;line-height:1.2;
+  }
   #brand .sub .sep, #brand .sub .spec{display:none}
-  #brand .name{
-    margin-top:5px;font-size:8px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--dim);opacity:.75;font-weight:400;
-  }
 
   /* soft vignette patches for ink paper mode */
   body.ink #brand{
@@ -328,9 +340,10 @@
   }
   @media (max-width:430px){
     #brand{padding:14px 16px}
-    #brand .wm{font-size:22px}
-    #brand .sub{font-size:7px;letter-spacing:.1em;margin-top:6px;flex-wrap:wrap}
-    #brand .name{display:none}
+    #brand .wm{font-size:20px}
+    #brand .nano-cube-icon{width:18px;height:18px}
+    #brand .by{font-size:7px;letter-spacing:.18em;margin-top:4px}
+    #brand #status{display:none}
     #meta{display:none}
     #rail{display:none}
     #dock .transport{flex:1 1 0;min-width:0;height:42px}
@@ -353,8 +366,8 @@
 <div class="trim bl"></div><div class="trim br"></div>
 
 <header id="brand" class="ui">
-  <div class="row">
-    <svg class="nano-cube-icon" width="22" height="22" style="margin-right:8px;flex-shrink:0;vertical-align:middle;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <div class="brand-row">
+    <svg class="nano-cube-icon" width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
   <defs>
     <linearGradient id="nbGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f5dcaf"/>
@@ -1178,7 +1191,7 @@ function buildTargets(){
 }
 
 let lastW = 0, lastH = 0, needsResize = false;
-function markResize(){ needsResize = true; }
+function markResize(){ needsResize = true; resize(); }
 function resize(){
   DPR = Math.min(devicePixelRatio || 1, 2);
   W = canvas.clientWidth; H = canvas.clientHeight;
