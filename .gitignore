@@ -1,5 +1,10 @@
 node_modules/
-.tools/node_modules/
+.tools/
+!.tools/audit.js
+.workbuddy-ai/
+research/
+*.png
+*.jpg
 *.backup.html
 *.pre_art.html
 .DS_Store
