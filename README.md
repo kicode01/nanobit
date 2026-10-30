@@ -246,38 +246,6 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ---
 
-## 📂 Project Structure
-
-```
-nanobit/
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md           # Bug report template
-│   │   └── feature_request.md      # Specimen & feature proposal template
-│   └── workflows/
-│       ├── ci.yml                  # Automated deliverable & schema validation
-│       └── release.yml             # Automatic standalone zip builder & release publisher
-├── assets/
-│   ├── banner.svg                  # Brand product header banner
-│   ├── icon.svg                    # Geometric isometric crystal & dust SVG icon
-│   ├── ui-main.png                 # Main interface screenshot (Starry Night)
-│   ├── ui-panel.png                # Optical studio adjustment panel screenshot
-│   └── transitions.png             # Specimen morph & transition sequence showcase
-├── .tools/
-│   └── audit.js                    # Automated headless Playwright verification suite
-├── .gitignore                      # Clean production ignore rules
-├── .vercelignore                   # Vercel deployment exclusions
-├── CHANGELOG.md                    # SemVer release history & milestone logs
-├── CONTRIBUTING.md                 # Contribution, testing, and feedback guide
-├── index.html                      # Core WebGL2 client application
-├── LICENSE                         # Intellectual property & proprietary license
-├── package.json                    # Project metadata, scripts, and release commands
-├── README.md                       # Comprehensive product documentation
-└── vercel.json                     # Edge CDN routing configuration
-```
-
----
-
 ## 📜 Intellectual Property & License
 
 Copyright © 2026 kicode01. All Rights Reserved.  
