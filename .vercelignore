@@ -1,0 +1,8 @@
+.tools
+.workbuddy-ai
+research
+*.backup.html
+*.pre_art.html
+*.png
+*.jpg
+node_modules
