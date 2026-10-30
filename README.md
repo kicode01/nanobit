@@ -2,8 +2,8 @@
 > **Interactive 3D particle dust & optical depth gallery**  
 > *By kicode01*
 
-[![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=nanobit)](https://vercel.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
+[![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=nanobit)](https://nanobit.vercel.app)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![WebGL2](https://img.shields.io/badge/WebGL2-1%2C048%2C576%20Grains-gold.svg)](#)
 
 ---
@@ -51,29 +51,11 @@ Bridging the physical and digital, images do not merely transition—they dissol
 
 ---
 
-## 🚀 Deployment
-
-### Deploy to Vercel
-1. Fork or push this repository to GitHub:
-   ```bash
-   git remote add origin https://github.com/kicode01/nanobit.git
-   git push -u origin main
-   ```
-2. Import the repository in [Vercel](https://vercel.com).
-3. Vercel automatically detects `index.html` and deploys it globally on edge CDN with zero configuration.
-
-### Local Development
-```bash
-# Clone the repository
-git clone https://github.com/kicode01/nanobit.git
-cd nanobit
-
-# Serve locally
-npx serve .
-# Or open index.html directly in any modern browser
-```
+## 🚀 Live Demo
+Experience the production release at [**nanobit.vercel.app**](https://nanobit.vercel.app).
 
 ---
 
-## 📜 License
-MIT © [kicode01](https://github.com/kicode01)
+## 📜 Intellectual Property & License
+Copyright © 2026 kicode01. All Rights Reserved.  
+Proprietary software. Unauthorized copying, distribution, modification, reverse engineering, or extraction of code and assets is strictly prohibited. See [LICENSE](LICENSE) for details.

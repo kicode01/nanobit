@@ -2,7 +2,8 @@ const { chromium } = require('playwright-core');
 const path = require('path');
 const fs = require('fs');
 
-const FILE = 'file:///' + path.resolve(__dirname, '..', 'loess.html').replace(/\\/g, '/');
+const TARGET_NAME = process.env.TARGET || 'loess.html';
+const FILE = 'file:///' + path.resolve(__dirname, '..', TARGET_NAME).replace(/\\/g, '/');
 const results = [];
 const ok = (name, pass, detail) => results.push({ name, pass, detail: detail || '' });
 
@@ -30,7 +31,8 @@ async function snap(page, name) {
   page.on('console', m => { if (m.type() === 'error') errs.push('CONSOLE ' + m.text().slice(0, 200)); });
 
   await page.goto(FILE, { waitUntil: 'load' });
-  await page.waitForTimeout(7000);
+  await page.waitForSelector('#load', { state: 'detached', timeout: 15000 }).catch(() => null);
+  await page.waitForTimeout(600);
 
   // ---------- 1. every element exists ----------
   const ids = ['gl','brand','spec','status','meta','mPts','mDepth','mOcc','scale','focusMark','hint',

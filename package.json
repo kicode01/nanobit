@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Interactive 3D particle dust and optical depth gallery powered by WebGL2 and monocular depth AI.",
   "main": "index.html",
+  "private": true,
   "scripts": {
     "test": "node .tools/audit.js",
     "start": "npx serve ."
@@ -16,5 +17,5 @@
     "ai-art"
   ],
   "author": "kicode01",
-  "license": "MIT"
+  "license": "UNLICENSED"
 }
