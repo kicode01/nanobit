@@ -478,6 +478,7 @@
     <button class="sw" data-prim="3" title="Prism — diamond crystalline facets with glint">Prism</button>
     <button class="sw" data-prim="4" title="Cross — precision micro-reticle markers">Cross</button>
     <button class="sw" data-prim="5" title="Star — four-point quantum astroid sparkle">Star</button>
+    <button class="sw" data-prim="6" title="Binary — floating 3D procedural 0s and 1s">Binary</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1033,6 +1034,20 @@ void main(){
     float d = pow(abs(p.x), 0.55) + pow(abs(p.y), 0.55);
     a = smoothstep(1.02, 0.65, d);
     if (d < 0.45) col += 0.15;
+  } else if (uPrimitive == 6) {
+    // Binary: Floating 3D procedural 0s and 1s bitstream
+    float digitHash = fract(sin(dot(floor(gl_FragCoord.xy * 0.25), vec2(127.1, 311.7))) * 43758.5453);
+    if (digitHash > 0.5) {
+      // Glyph '0'
+      float outer = max(abs(p.x) * 1.55, abs(p.y));
+      float inner = max(abs(p.x) * 3.6, abs(p.y) * 1.6);
+      a = smoothstep(0.92, 0.76, outer) * (1.0 - smoothstep(0.55, 0.38, inner));
+    } else {
+      // Glyph '1'
+      float stem = max(abs(p.x + 0.08) * 3.8, abs(p.y));
+      float serif = max(abs(p.x + p.y * 0.8 + 0.35) * 4.2, abs(p.y - 0.55) * 4.0);
+      a = max(smoothstep(0.92, 0.72, stem), smoothstep(0.85, 0.65, serif));
+    }
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2233,14 +2248,15 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
   'quantum honeycomb nanotech lattice',
   'diamond crystalline facets with glint',
   'precision micro-reticle markers',
-  'four-point quantum astroid sparkle'
+  'four-point quantum astroid sparkle',
+  'floating 3D procedural 0s and 1s'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
