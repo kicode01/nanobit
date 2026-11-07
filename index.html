@@ -498,6 +498,7 @@
     <button class="sw" data-shader="5" title="Blueprint — cyanotype architectural grid & drafting glow">Blueprint</button>
     <button class="sw" data-shader="6" title="Glitch — quantum VHS tape tear & chromatic drift">Glitch</button>
     <button class="sw" data-shader="7" title="Magma — incandescent basalt crust with convective heat luminescence">Magma</button>
+    <button class="sw" data-shader="8" title="NVG — military Gen-3 night-vision phosphor tube scintillation">NVG</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1221,6 +1222,14 @@ void main(){
     vec3 basalt = vec3(0.06, 0.03, 0.04);
     vec3 lava = mix(vec3(0.95, 0.18, 0.02), vec3(1.0, 0.88, 0.35), pow(heat, 2.2));
     col = mix(basalt, lava, smoothstep(0.18, 0.85, heat)) * 1.35;
+  } else if (uShaderMat == 8) {
+    // NVG: Military Gen-3 night-vision phosphor tube scintillation
+    float lum = dot(col, vec3(0.299, 0.587, 0.114));
+    lum = pow(lum, 0.72) * 1.5;
+    float scintillation = fract(sin(dot(gl_FragCoord.xy + uTime * 18.0, vec2(12.9898, 78.233))) * 43758.5453);
+    vec3 nvg = vec3(0.12, 1.38, 0.32);
+    vec3 flare = vec3(0.4, 0.9, 0.5) * pow(lum, 2.8);
+    col = (nvg * lum + flare) * (0.86 + 0.28 * scintillation);
   }
 
   float cov = a * vA;
@@ -2415,7 +2424,7 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
-const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint', 'Glitch', 'Magma'];
+const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint', 'Glitch', 'Magma', 'NVG'];
 const SHADER_DESC = [
   'authentic photographic & impasto medium',
   'phosphor CRT scanlines & matrix glow',
@@ -2424,7 +2433,8 @@ const SHADER_DESC = [
   'infrared false-color spectral radiation',
   'cyanotype architectural grid & drafting glow',
   'quantum VHS tape tear & chromatic drift',
-  'incandescent basalt crust with convective heat luminescence'
+  'incandescent basalt crust with convective heat luminescence',
+  'military Gen-3 night-vision phosphor tube scintillation'
 ];
 function setShaderMat(n){
   S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
