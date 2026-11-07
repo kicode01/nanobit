@@ -483,6 +483,7 @@
     <button class="sw" data-prim="8" title="Torus — glowing annular quantum ring halo">Torus</button>
     <button class="sw" data-prim="9" title="Matrix — digital cyberpunk glyph code symbol">Matrix</button>
     <button class="sw" data-prim="10" title="Digits — procedural 7-segment LED numeral readouts (0-9)">Digits</button>
+    <button class="sw" data-prim="11" title="Braille — tactile 2x3 punch-matrix embossed dot array">Braille</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1098,6 +1099,25 @@ void main(){
     else if (d == 8) seg = min(min(min(dTop, dMid), dBot), min(min(dTL, dTR), min(dBL, dBR)));
     else seg = min(min(min(dTop, dMid), dBot), min(min(dTL, dTR), dBR));
     a = smoothstep(0.06, 0.00, seg);
+  } else if (uPrimitive == 11) {
+    // Braille: Tactile 2x3 punch-matrix dot array
+    float bHash = fract(sin(dot(floor(gl_FragCoord.xy * 0.26), vec2(83.3, 219.1))) * 43758.5453);
+    int bBits = int(floor(bHash * 63.0)) + 1;
+    float dotDist = 10.0;
+    vec2 p1 = p - vec2(-0.34, 0.50);
+    vec2 p2 = p - vec2(-0.34, 0.00);
+    vec2 p3 = p - vec2(-0.34, -0.50);
+    vec2 p4 = p - vec2(0.34, 0.50);
+    vec2 p5 = p - vec2(0.34, 0.00);
+    vec2 p6 = p - vec2(0.34, -0.50);
+    if ((bBits & 1) != 0) dotDist = min(dotDist, length(p1));
+    if ((bBits & 2) != 0) dotDist = min(dotDist, length(p2));
+    if ((bBits & 4) != 0) dotDist = min(dotDist, length(p3));
+    if ((bBits & 8) != 0) dotDist = min(dotDist, length(p4));
+    if ((bBits & 16) != 0) dotDist = min(dotDist, length(p5));
+    if ((bBits & 32) != 0) dotDist = min(dotDist, length(p6));
+    a = smoothstep(0.18, 0.08, dotDist);
+    if (dotDist < 0.12) col += 0.22 * (1.0 - dotDist / 0.12);
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2305,7 +2325,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2317,7 +2337,8 @@ const PRIM_DESC = [
   'retro terminal micro-hash matrix (#)',
   'glowing annular quantum ring halo',
   'digital cyberpunk glyph code symbol',
-  'procedural 7-segment LED numeral readouts (0-9)'
+  'procedural 7-segment LED numeral readouts (0-9)',
+  'tactile 2x3 punch-matrix embossed dot array'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
