@@ -477,6 +477,7 @@
     <button class="sw" data-prim="2" title="Hex — quantum honeycomb nanotech lattice">Hex</button>
     <button class="sw" data-prim="3" title="Prism — diamond crystalline facets with glint">Prism</button>
     <button class="sw" data-prim="4" title="Cross — precision micro-reticle markers">Cross</button>
+    <button class="sw" data-prim="5" title="Star — four-point quantum astroid sparkle">Star</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1018,6 +1019,11 @@ void main(){
     vec2 ap = abs(p);
     float crossDist = min(max(ap.x, ap.y * 3.2), max(ap.y, ap.x * 3.2));
     a = smoothstep(0.88, 0.68, crossDist);
+  } else if (uPrimitive == 5) {
+    // Star: Four-point quantum astroid sparkle with luminous core
+    float d = pow(abs(p.x), 0.55) + pow(abs(p.y), 0.55);
+    a = smoothstep(1.02, 0.65, d);
+    if (d < 0.45) col += 0.15;
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2184,13 +2190,14 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
   'quantum honeycomb nanotech lattice',
   'diamond crystalline facets with glint',
-  'precision micro-reticle markers'
+  'precision micro-reticle markers',
+  'four-point quantum astroid sparkle'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
