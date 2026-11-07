@@ -479,6 +479,11 @@
     <button class="sw" data-prim="4" title="Cross — precision micro-reticle markers">Cross</button>
     <button class="sw" data-prim="5" title="Star — four-point quantum astroid sparkle">Star</button>
   </div>
+  <div class="chips shader" id="shaderRow">
+    <span class="txl">Shader</span>
+    <button class="sw on" data-shader="0" title="Natural — authentic photographic & impasto medium">Natural</button>
+    <button class="sw" data-shader="1" title="Cyber — phosphor CRT scanlines & matrix glow">Cyber</button>
+  </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
     <button class="sw on" data-tx="0" title="Lift — the plate breathes and settles">Lift</button>
@@ -1029,6 +1034,15 @@ void main(){
     float r = length(p);
     a = smoothstep(1.0, 0.02, r); a = a*a;
   }
+
+  // 2. Shader Material Transformations
+  if (uShaderMat == 1) {
+    // Cyber: Phosphor CRT scanlines & matrix glow
+    float scanline = 0.86 + 0.14 * sin(gl_FragCoord.y * 2.2 + uTime * 4.0);
+    float lum = dot(col, vec3(0.299, 0.587, 0.114));
+    col = vec3(lum * 0.15, lum * 1.30, lum * 0.65) * scanline;
+  }
+
   float cov = a * vA;
   o = vec4(col * cov, cov);   // colour and coverage carry the same weight
 }`;
@@ -2212,6 +2226,24 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
+const SHADER_NAMES = ['Natural', 'Cyber'];
+const SHADER_DESC = [
+  'authentic photographic & impasto medium',
+  'phosphor CRT scanlines & matrix glow'
+];
+function setShaderMat(n){
+  S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
+  document.querySelectorAll('#shaderRow .sw').forEach(b => {
+    b.classList.toggle('on', +b.dataset.shader === S.shaderMat);
+  });
+}
+document.querySelectorAll('#shaderRow .sw').forEach(b => {
+  b.addEventListener('click', () => {
+    setShaderMat(+b.dataset.shader);
+    toast('shader — ' + SHADER_NAMES[S.shaderMat] + ': ' + SHADER_DESC[S.shaderMat]);
+  });
+});
+
 const TX_NAMES = ['lift', 'pour', 'wipe', 'fade'];
 const TX_DESC = [
   'the plate breathes and settles',
@@ -2300,6 +2332,7 @@ addEventListener('keydown', e => {
     case 'p': $('#bSave').click(); break;
     case 'g': if (!e.repeat) startStir(); break;
     case 'm': setPrimitive(S.primitive + 1); toast('primitive — ' + PRIM_NAMES[S.primitive] + ': ' + PRIM_DESC[S.primitive]); break;
+    case 'k': setShaderMat(S.shaderMat + 1); toast('shader — ' + SHADER_NAMES[S.shaderMat] + ': ' + SHADER_DESC[S.shaderMat]); break;
     case 't': setTx(S.tx + 1); toast('turn of the page — ' + TX_NAMES[S.tx] + ': ' + TX_DESC[S.tx]); break;
     case 'h':
       document.querySelectorAll('.ui').forEach(n => n.style.opacity = n.style.opacity === '0' ? '' : '0');
@@ -2662,7 +2695,7 @@ async function boot(){
 }
 
 window.LOESS = {
-  S, cam, gl, progColor, slots, setPicture, nextPicture, setPrimitive, setTx,
+  S, cam, gl, progColor, slots, setPicture, nextPicture, setPrimitive, setShaderMat, setTx,
   sceneCache: () => sceneCache,
   model: Model,
   modelStatus,
