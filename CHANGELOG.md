@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-11-08
+
+### Added
+- **18 Procedural Particle Morphology Primitives**:
+  - `Dust`: Classic organic soft circular grains with Gaussian falloff.
+  - `Bits`: Digital square silicon voxels with beveled pixel core highlights.
+  - `Hex`: Quantum honeycomb nanotech lattice with 6-fold geometric symmetry.
+  - `Prism`: Diamond crystalline facets with diagonal specular glints.
+  - `Cross`: Precision digital micro-reticle markers.
+  - `Star`: Four-point quantum astroid sparkle with high-intensity luminous core.
+  - `Binary`: Floating 3D procedural 0s and 1s bitstream.
+  - `ASCII`: Retro terminal micro-hash matrix (`#`).
+  - `Torus`: Glowing annular quantum ring halo.
+  - `Matrix`: Digital cyberpunk glyph code symbol.
+  - `Digits`: Procedural 7-segment LED numeral readouts (`0` through `9`).
+  - `Braille`: Tactile 2x3 punch-matrix embossed dot array.
+  - `Voxel`: Pseudo-3D isometric crystalline micro-cube with 3-tone facet shading.
+  - `Rune`: Ancient Norse & cybernetic runic vector sigils (`ᚠ`, `ᛉ`, `ᛏ`, `◇`).
+  - `Glyph`: Alien & cybernetic cipher ideogram with concentric orbital rings.
+  - `Delta`: Equilateral quantum prism triangle with inverted negative-space core.
+  - `Atom`: Subatomic Rutherford-Bohr planetary orbital shells and bright nucleus.
+  - `Letters`: Procedural Roman capital typographic glyphs (`A`, `E`, `X`, `O`, `T`).
+- **11 Advanced Shader Materials**:
+  - `Natural`: Authentic photographic and impasto pigment medium.
+  - `Cyber`: Phosphor CRT raster scanlines with high-contrast cybernetic matrix glow.
+  - `Gilded`: Gustav Klimt-inspired auric gold leaf with dynamic metallic specular glints.
+  - `Holo`: Iridescent prismatic thin-film interference with continuous spectral dispersion.
+  - `Thermal`: Thermodynamic infrared false-color spectral radiation.
+  - `Blueprint`: Cyanotype architectural grid with luminous drafting lines.
+  - `Glitch`: Quantum VHS tape tear, scanline skew, and dynamic chromatic drift.
+  - `Magma`: Incandescent basalt crust with convective heat luminescence and molten veins.
+  - `NVG`: Military Gen-3 night-vision phosphor tube scintillation and dynamic cathode grain.
+  - `Cosmic`: Deep space H-alpha nebula starlight and interstellar dust fields.
+  - `Aero`: Supersonic schlieren aerodynamic shock fronts and optical refraction gradients.
+
+---
+
 ## [1.1.0] - 2026-11-08
 
 ### Added

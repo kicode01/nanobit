@@ -78,13 +78,25 @@ Toggle effortlessly between two physical presentation plates:
 A physically-modeled optical camera pipeline provides authentic focal blur, circle-of-confusion simulations, aperture radius dials, and chromatic bloom flares.
 
 ### 🔲 Particle Morphology Primitives
-Instead of only soft circular dust, switch between six distinct 3D geometric primitives:
+Instead of only soft circular dust, switch between 18 distinct procedural particle primitives:
 * **`Dust`**: Organic soft circular grains with smooth Gaussian falloff.
 * **`Bits`**: Digital square silicon voxels with beveled pixel core highlights.
 * **`Hex`**: Quantum honeycomb nanotech lattice with 6-fold geometric symmetry.
 * **`Prism`**: Diamond crystalline facets with diagonal specular glints.
 * **`Cross`**: Precision digital micro-reticle markers.
 * **`Star`**: Four-point quantum astroid sparkle with high-intensity luminous core.
+* **`Binary`**: Floating 3D procedural 0s and 1s bitstream.
+* **`ASCII`**: Retro terminal micro-hash matrix (`#`).
+* **`Torus`**: Glowing annular quantum ring halo.
+* **`Matrix`**: Digital cyberpunk glyph code symbol.
+* **`Digits`**: Procedural 7-segment LED numeral readouts (`0` through `9`).
+* **`Braille`**: Tactile 2x3 punch-matrix embossed dot array.
+* **`Voxel`**: Pseudo-3D isometric crystalline micro-cube with 3-tone facet shading.
+* **`Rune`**: Ancient Norse & cybernetic runic vector sigils (`ᚠ`, `ᛉ`, `ᛏ`, `◇`).
+* **`Glyph`**: Alien & cybernetic cipher ideogram with concentric orbital rings.
+* **`Delta`**: Equilateral quantum prism triangle with inverted negative-space core.
+* **`Atom`**: Subatomic Rutherford-Bohr planetary orbital shells and bright nucleus.
+* **`Letters`**: Procedural Roman capital typographic glyphs (`A`, `E`, `X`, `O`, `T`).
 
 ### 🎨 Advanced Shader Materials
 Dynamically alter physical light transport, optics, and surface material response:
@@ -94,6 +106,11 @@ Dynamically alter physical light transport, optics, and surface material respons
 * **`Holo`**: Iridescent prismatic thin-film interference with continuous spectral dispersion.
 * **`Thermal`**: Thermodynamic infrared false-color spectral radiation.
 * **`Blueprint`**: Cyanotype architectural grid with luminous drafting lines.
+* **`Glitch`**: Quantum VHS tape tear, scanline skew, and dynamic chromatic drift.
+* **`Magma`**: Incandescent basalt crust with convective heat luminescence and molten veins.
+* **`NVG`**: Military Gen-3 night-vision phosphor tube scintillation and dynamic cathode grain.
+* **`Cosmic`**: Deep space H-alpha nebula starlight and interstellar dust fields.
+* **`Aero`**: Supersonic schlieren aerodynamic shock fronts and optical refraction gradients.
 
 ### 💨 Interactive Aerodynamic Turbulence
 Press **`g`** or hold down mouse/touch to unleash fluid drag turbulence. Particles break away from the relief substrate, swirling into vortex clouds before gently precipitating back into registration.
@@ -128,8 +145,8 @@ Toggle diagnostic modes (**`d`**) to inspect:
 | **Next Specimen** | <kbd>Space</kbd> / `Turn` | Dissolves dust particles and gathers into the next artwork |
 | **Stir / Gust** | <kbd>G</kbd> / `Stir` | Click for an air gust; hold down pointer to continuously billow |
 | **Substrate Toggle** | <kbd>B</kbd> / `Plate` | Physical dissolve between Dark Obsidian Glass &amp; Rag Paper |
-| **Cycle Primitive** | <kbd>M</kbd> | Cycles particle primitives (*Dust* &rarr; *Bits* &rarr; *Hex* &rarr; *Prism* &rarr; *Cross* &rarr; *Star*) |
-| **Cycle Shader** | <kbd>K</kbd> | Cycles shader materials (*Natural* &rarr; *Cyber* &rarr; *Gilded* &rarr; *Holo* &rarr; *Thermal* &rarr; *Blueprint*) |
+| **Cycle Primitive** | <kbd>M</kbd> | Cycles 18 particle primitives (*Dust*, *Bits*, *Hex*, *Prism*, *Cross*, *Star*, *Binary*, *ASCII*, *Torus*, *Matrix*, *Digits*, *Braille*, *Voxel*, *Rune*, *Glyph*, *Delta*, *Atom*, *Letters*) |
+| **Cycle Shader** | <kbd>K</kbd> | Cycles 11 shader materials (*Natural*, *Cyber*, *Gilded*, *Holo*, *Thermal*, *Blueprint*, *Glitch*, *Magma*, *NVG*, *Cosmic*, *Aero*) |
 | **Save 4K PNG** | <kbd>P</kbd> / `Save` | Exports high-resolution 4K canvas capture with transparency |
 | **Studio Panel** | <kbd>O</kbd> / Click Sliders | Opens fine optical tuning panel (Relief, Focus, Aperture, Bloom) |
 | **Toggle Chrome UI** | <kbd>H</kbd> | Hides all interface elements for pure museum contemplation |
