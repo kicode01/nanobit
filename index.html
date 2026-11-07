@@ -500,6 +500,7 @@
     <button class="sw" data-shader="6" title="Glitch — quantum VHS tape tear & chromatic drift">Glitch</button>
     <button class="sw" data-shader="7" title="Magma — incandescent basalt crust with convective heat luminescence">Magma</button>
     <button class="sw" data-shader="8" title="NVG — military Gen-3 night-vision phosphor tube scintillation">NVG</button>
+    <button class="sw" data-shader="9" title="Cosmic — deep space H-alpha nebula starlight & stellar dust">Cosmic</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1239,6 +1240,16 @@ void main(){
     vec3 nvg = vec3(0.12, 1.38, 0.32);
     vec3 flare = vec3(0.4, 0.9, 0.5) * pow(lum, 2.8);
     col = (nvg * lum + flare) * (0.86 + 0.28 * scintillation);
+  } else if (uShaderMat == 9) {
+    // Cosmic: Deep space H-alpha nebula starlight & stellar dust
+    float lum = dot(col, vec3(0.299, 0.587, 0.114));
+    vec2 st = gl_FragCoord.xy * 0.008;
+    float gas = sin(st.x * 2.0 + uTime * 0.6) * cos(st.y * 2.0 - uTime * 0.4);
+    vec3 hAlpha = vec3(0.92, 0.14, 0.48);
+    vec3 oIII = vec3(0.12, 0.82, 0.96);
+    vec3 nebula = mix(hAlpha, oIII, 0.5 + 0.5 * gas);
+    vec3 star = vec3(1.0, 0.98, 0.92) * pow(lum, 3.2) * 1.8;
+    col = mix(vec3(0.03, 0.02, 0.06), nebula, lum * 1.25) + star;
   }
 
   float cov = a * vA;
@@ -2434,7 +2445,7 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
-const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint', 'Glitch', 'Magma', 'NVG'];
+const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint', 'Glitch', 'Magma', 'NVG', 'Cosmic'];
 const SHADER_DESC = [
   'authentic photographic & impasto medium',
   'phosphor CRT scanlines & matrix glow',
@@ -2444,7 +2455,8 @@ const SHADER_DESC = [
   'cyanotype architectural grid & drafting glow',
   'quantum VHS tape tear & chromatic drift',
   'incandescent basalt crust with convective heat luminescence',
-  'military Gen-3 night-vision phosphor tube scintillation'
+  'military Gen-3 night-vision phosphor tube scintillation',
+  'deep space H-alpha nebula starlight & stellar dust'
 ];
 function setShaderMat(n){
   S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
