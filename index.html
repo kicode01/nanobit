@@ -485,6 +485,7 @@
     <button class="sw" data-prim="10" title="Digits — procedural 7-segment LED numeral readouts (0-9)">Digits</button>
     <button class="sw" data-prim="11" title="Braille — tactile 2x3 punch-matrix embossed dot array">Braille</button>
     <button class="sw" data-prim="12" title="Voxel — pseudo-3D isometric crystalline micro-cube">Voxel</button>
+    <button class="sw" data-prim="13" title="Rune — ancient Norse & cybernetic runic vector sigil">Rune</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1132,6 +1133,30 @@ void main(){
     }
     float edge = min(abs(p.x * 0.57735 - p.y), min(abs(p.x * 0.57735 + p.y), abs(p.x)));
     if (edge < 0.04) col += 0.18;
+  } else if (uPrimitive == 13) {
+    // Rune: Ancient Norse & cybernetic runic vector sigil
+    float rHash = fract(sin(dot(floor(gl_FragCoord.xy * 0.22), vec2(57.3, 137.9))) * 43758.5453);
+    int rType = int(floor(rHash * 4.0));
+    float dStem = max(abs(p.x) - 0.07, abs(p.y) - 0.75);
+    float dRune = dStem;
+    if (rType == 0) {
+      float b1 = max(abs((p.x - 0.35) - (p.y - 0.45)) - 0.07, max(abs(p.x - 0.25) - 0.25, abs(p.y - 0.45) - 0.25));
+      float b2 = max(abs((p.x - 0.35) - (p.y - 0.05)) - 0.07, max(abs(p.x - 0.25) - 0.25, abs(p.y - 0.05) - 0.25));
+      dRune = min(dStem, min(b1, b2));
+    } else if (rType == 1) {
+      float bL = max(abs((p.x + 0.35) + (p.y - 0.45)) - 0.07, max(abs(p.x + 0.25) - 0.25, abs(p.y - 0.45) - 0.25));
+      float bR = max(abs((p.x - 0.35) - (p.y - 0.45)) - 0.07, max(abs(p.x - 0.25) - 0.25, abs(p.y - 0.45) - 0.25));
+      dRune = min(dStem, min(bL, bR));
+    } else if (rType == 2) {
+      float arrL = max(abs((p.x + 0.3) - (p.y - 0.55)) - 0.07, max(abs(p.x + 0.2) - 0.2, abs(p.y - 0.55) - 0.2));
+      float arrR = max(abs((p.x - 0.3) + (p.y - 0.55)) - 0.07, max(abs(p.x - 0.2) - 0.2, abs(p.y - 0.55) - 0.2));
+      dRune = min(dStem, min(arrL, arrR));
+    } else {
+      vec2 ap = abs(p);
+      float dia = abs((ap.x + ap.y) - 0.55);
+      dRune = min(dStem * 1.5, max(dia - 0.07, max(ap.x - 0.6, ap.y - 0.6)));
+    }
+    a = smoothstep(0.06, 0.00, dRune);
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2339,7 +2364,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille', 'Voxel'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille', 'Voxel', 'Rune'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2353,7 +2378,8 @@ const PRIM_DESC = [
   'digital cyberpunk glyph code symbol',
   'procedural 7-segment LED numeral readouts (0-9)',
   'tactile 2x3 punch-matrix embossed dot array',
-  'pseudo-3D isometric crystalline micro-cube'
+  'pseudo-3D isometric crystalline micro-cube',
+  'ancient Norse & cybernetic runic vector sigil'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
