@@ -485,6 +485,7 @@
     <button class="sw" data-shader="1" title="Cyber — phosphor CRT scanlines & matrix glow">Cyber</button>
     <button class="sw" data-shader="2" title="Gilded — Klimt auric gold leaf & metallic glint">Gilded</button>
     <button class="sw" data-shader="3" title="Holo — iridescent prismatic thin-film interference">Holo</button>
+    <button class="sw" data-shader="4" title="Thermal — infrared false-color spectral radiation">Thermal</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1054,6 +1055,15 @@ void main(){
     float phase = dot(gl_FragCoord.xy, vec2(0.015, 0.02)) + uTime * 1.5;
     vec3 spectral = 0.5 + 0.5 * cos(phase + vec3(0.0, 2.094, 4.188));
     col = col * 0.5 + spectral * col * 1.25;
+  } else if (uShaderMat == 4) {
+    // Thermal: Infrared false-color thermodynamic radiation
+    float lum = clamp(dot(col, vec3(0.299, 0.587, 0.114)), 0.0, 1.0);
+    vec3 heat = vec3(
+      smoothstep(0.35, 0.85, lum),
+      smoothstep(0.20, 0.65, lum) - smoothstep(0.70, 0.95, lum) * 0.4,
+      smoothstep(0.02, 0.38, lum) - smoothstep(0.38, 0.72, lum)
+    );
+    col = mix(vec3(0.04, 0.01, 0.08), vec3(1.0, 0.96, 0.82), lum) + heat * 0.65;
   }
 
   float cov = a * vA;
@@ -2239,12 +2249,13 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
-const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo'];
+const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal'];
 const SHADER_DESC = [
   'authentic photographic & impasto medium',
   'phosphor CRT scanlines & matrix glow',
   'Klimt auric gold leaf & metallic glint',
-  'iridescent prismatic thin-film interference'
+  'iridescent prismatic thin-film interference',
+  'infrared false-color spectral radiation'
 ];
 function setShaderMat(n){
   S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
