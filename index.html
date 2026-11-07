@@ -2586,6 +2586,8 @@ addEventListener('pointercancel', () => { if (stirHolding) stopStir(); });
 $('#bPaper').onclick = () => {
   S.inkTarget = S.inkTarget > 0.5 ? 0 : 1;
   $('#bPaper').classList.toggle('on', S.inkTarget > 0.5);
+  bodyInk = S.inkTarget > 0.5;
+  document.body.classList.toggle('ink', bodyInk);
 };
 $('#bPanel').onclick = () => {
   const p = $('#panel');
