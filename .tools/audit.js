@@ -12,7 +12,7 @@ const ok = (name, pass, detail) => results.push({ name, pass, detail: detail || 
 async function snap(page, name) {
   const p = path.resolve(__dirname, 'shots', name);
   try {
-    await page.screenshot({ path: p, timeout: 90000 });
+    await page.screenshot({ path: p, timeout: 4000 });
   } catch (e) {
     const d = await page.evaluate(() => document.querySelector('#gl').toDataURL('image/png'));
     fs.writeFileSync(p, Buffer.from(d.split(',')[1], 'base64'));
