@@ -482,6 +482,7 @@
     <button class="sw" data-prim="7" title="ASCII — retro terminal micro-hash matrix (#)">ASCII</button>
     <button class="sw" data-prim="8" title="Torus — glowing annular quantum ring halo">Torus</button>
     <button class="sw" data-prim="9" title="Matrix — digital cyberpunk glyph code symbol">Matrix</button>
+    <button class="sw" data-prim="10" title="Digits — procedural 7-segment LED numeral readouts (0-9)">Digits</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1073,6 +1074,30 @@ void main(){
     float stroke2 = max(abs(gp.y - 0.2), abs(gp.x * 0.8));
     float glyph = min(stroke1 * 2.8, stroke2 * 3.2);
     a = smoothstep(0.95, 0.75, box) * smoothstep(0.85, 0.55, glyph);
+  } else if (uPrimitive == 10) {
+    // Digits: Procedural 7-segment digital LED readout (0-9)
+    float dHash = fract(sin(dot(floor(gl_FragCoord.xy * 0.28), vec2(173.1, 419.7))) * 43758.5453);
+    int d = int(floor(dHash * 10.0));
+    vec2 dp = p * 1.35;
+    float dTop = max(abs(dp.x) - 0.38, abs(dp.y - 0.62) - 0.08);
+    float dMid = max(abs(dp.x) - 0.38, abs(dp.y) - 0.08);
+    float dBot = max(abs(dp.x) - 0.38, abs(dp.y + 0.62) - 0.08);
+    float dTL  = max(abs(dp.x + 0.38) - 0.08, abs(dp.y - 0.31) - 0.25);
+    float dTR  = max(abs(dp.x - 0.38) - 0.08, abs(dp.y - 0.31) - 0.25);
+    float dBL  = max(abs(dp.x + 0.38) - 0.08, abs(dp.y + 0.31) - 0.25);
+    float dBR  = max(abs(dp.x - 0.38) - 0.08, abs(dp.y + 0.31) - 0.25);
+    float seg = 10.0;
+    if (d == 0) seg = min(min(min(dTop, dBot), min(dTL, dTR)), min(dBL, dBR));
+    else if (d == 1) seg = min(dTR, dBR);
+    else if (d == 2) seg = min(min(dTop, dMid), min(min(dTR, dBL), dBot));
+    else if (d == 3) seg = min(min(dTop, dMid), min(min(dTR, dBR), dBot));
+    else if (d == 4) seg = min(min(dTL, dMid), min(dTR, dBR));
+    else if (d == 5) seg = min(min(dTop, dMid), min(min(dTL, dBR), dBot));
+    else if (d == 6) seg = min(min(min(dTop, dMid), dBot), min(min(dTL, dBL), dBR));
+    else if (d == 7) seg = min(dTop, min(dTR, dBR));
+    else if (d == 8) seg = min(min(min(dTop, dMid), dBot), min(min(dTL, dTR), min(dBL, dBR)));
+    else seg = min(min(min(dTop, dMid), dBot), min(min(dTL, dTR), dBR));
+    a = smoothstep(0.06, 0.00, seg);
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2280,7 +2305,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2291,7 +2316,8 @@ const PRIM_DESC = [
   'floating 3D procedural 0s and 1s',
   'retro terminal micro-hash matrix (#)',
   'glowing annular quantum ring halo',
-  'digital cyberpunk glyph code symbol'
+  'digital cyberpunk glyph code symbol',
+  'procedural 7-segment LED numeral readouts (0-9)'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
