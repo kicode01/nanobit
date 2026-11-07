@@ -479,6 +479,7 @@
     <button class="sw" data-prim="4" title="Cross — precision micro-reticle markers">Cross</button>
     <button class="sw" data-prim="5" title="Star — four-point quantum astroid sparkle">Star</button>
     <button class="sw" data-prim="6" title="Binary — floating 3D procedural 0s and 1s">Binary</button>
+    <button class="sw" data-prim="7" title="ASCII — retro terminal micro-hash matrix (#)">ASCII</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1048,6 +1049,13 @@ void main(){
       float serif = max(abs(p.x + p.y * 0.8 + 0.35) * 4.2, abs(p.y - 0.55) * 4.0);
       a = max(smoothstep(0.92, 0.72, stem), smoothstep(0.85, 0.65, serif));
     }
+  } else if (uPrimitive == 7) {
+    // ASCII: Retro terminal ASCII hash grid (#)
+    vec2 ap = abs(p);
+    float vBars = min(abs(ap.x - 0.35), abs(ap.x + 0.35));
+    float hBars = min(abs(ap.y - 0.35), abs(ap.y + 0.35));
+    float grid = min(max(vBars * 4.5, ap.y), max(hBars * 4.5, ap.x));
+    a = smoothstep(0.92, 0.70, grid);
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2248,7 +2256,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2256,7 +2264,8 @@ const PRIM_DESC = [
   'diamond crystalline facets with glint',
   'precision micro-reticle markers',
   'four-point quantum astroid sparkle',
-  'floating 3D procedural 0s and 1s'
+  'floating 3D procedural 0s and 1s',
+  'retro terminal micro-hash matrix (#)'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
