@@ -486,6 +486,7 @@
     <button class="sw" data-shader="2" title="Gilded — Klimt auric gold leaf & metallic glint">Gilded</button>
     <button class="sw" data-shader="3" title="Holo — iridescent prismatic thin-film interference">Holo</button>
     <button class="sw" data-shader="4" title="Thermal — infrared false-color spectral radiation">Thermal</button>
+    <button class="sw" data-shader="5" title="Blueprint — cyanotype architectural grid & drafting glow">Blueprint</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1064,6 +1065,11 @@ void main(){
       smoothstep(0.02, 0.38, lum) - smoothstep(0.38, 0.72, lum)
     );
     col = mix(vec3(0.04, 0.01, 0.08), vec3(1.0, 0.96, 0.82), lum) + heat * 0.65;
+  } else if (uShaderMat == 5) {
+    // Blueprint: Cyanotype architectural grid & drafting glow
+    float lum = dot(col, vec3(0.299, 0.587, 0.114));
+    vec3 cyan = vec3(0.08, 0.42, 0.95) * (0.35 + lum * 1.25) + vec3(0.65, 0.92, 1.0) * pow(lum, 2.8);
+    col = cyan;
   }
 
   float cov = a * vA;
@@ -2249,13 +2255,14 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
-const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal'];
+const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint'];
 const SHADER_DESC = [
   'authentic photographic & impasto medium',
   'phosphor CRT scanlines & matrix glow',
   'Klimt auric gold leaf & metallic glint',
   'iridescent prismatic thin-film interference',
-  'infrared false-color spectral radiation'
+  'infrared false-color spectral radiation',
+  'cyanotype architectural grid & drafting glow'
 ];
 function setShaderMat(n){
   S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
