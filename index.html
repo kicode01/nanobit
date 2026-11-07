@@ -489,6 +489,7 @@
     <button class="sw" data-prim="14" title="Glyph — alien & cybernetic cipher ideogram">Glyph</button>
     <button class="sw" data-prim="15" title="Delta — equilateral quantum prism triangle with inverted core">Delta</button>
     <button class="sw" data-prim="16" title="Atom — subatomic Bohr orbital shells & nucleus">Atom</button>
+    <button class="sw" data-prim="17" title="Letters — procedural Roman capital typographic glyphs (A, E, X, O, T)">Letters</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1194,6 +1195,31 @@ void main(){
     float orbits = min(min(ring0, ring1), ring2);
     a = max(nucleus, smoothstep(0.12, 0.04, orbits));
     if (r < 0.22) col += 0.25;
+  } else if (uPrimitive == 17) {
+    // Letters: Procedural Roman capital typographic glyphs (A, E, X, O, T)
+    float lHash = fract(sin(dot(floor(gl_FragCoord.xy * 0.24), vec2(97.1, 331.7))) * 43758.5453);
+    int lType = int(floor(lHash * 5.0));
+    float dLetter = 10.0;
+    if (lType == 0) {
+      float legs = max(abs(abs(p.x) - (0.65 - p.y) * 0.45) - 0.08, abs(p.y) - 0.65);
+      float bar = max(abs(p.y + 0.05) - 0.08, abs(p.x) - 0.35);
+      dLetter = min(legs, bar);
+    } else if (lType == 1) {
+      float stem = max(abs(p.x + 0.35) - 0.08, abs(p.y) - 0.65);
+      float bTop = max(abs(p.y - 0.58) - 0.08, max(abs(p.x - 0.05) - 0.38, -p.x - 0.35));
+      float bMid = max(abs(p.y) - 0.08, max(abs(p.x - 0.0) - 0.30, -p.x - 0.35));
+      float bBot = max(abs(p.y + 0.58) - 0.08, max(abs(p.x - 0.05) - 0.38, -p.x - 0.35));
+      dLetter = min(stem, min(min(bTop, bMid), bBot));
+    } else if (lType == 2) {
+      dLetter = max(abs(abs(p.x) - abs(p.y)) - 0.08, max(abs(p.x) - 0.55, abs(p.y) - 0.65));
+    } else if (lType == 3) {
+      dLetter = abs(length(vec2(p.x * 1.3, p.y)) - 0.62) - 0.08;
+    } else {
+      float bTop = max(abs(p.y - 0.58) - 0.08, abs(p.x) - 0.55);
+      float stem = max(abs(p.x) - 0.08, abs(p.y + 0.05) - 0.65);
+      dLetter = min(bTop, stem);
+    }
+    a = smoothstep(0.06, 0.00, dLetter);
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2436,7 +2462,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille', 'Voxel', 'Rune', 'Glyph', 'Delta', 'Atom'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille', 'Voxel', 'Rune', 'Glyph', 'Delta', 'Atom', 'Letters'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2454,7 +2480,8 @@ const PRIM_DESC = [
   'ancient Norse & cybernetic runic vector sigil',
   'alien & cybernetic cipher ideogram',
   'equilateral quantum prism triangle with inverted core',
-  'subatomic Bohr orbital shells & nucleus'
+  'subatomic Bohr orbital shells & nucleus',
+  'procedural Roman capital typographic glyphs (A, E, X, O, T)'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
