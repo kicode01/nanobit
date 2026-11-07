@@ -491,6 +491,7 @@
     <button class="sw" data-shader="3" title="Holo — iridescent prismatic thin-film interference">Holo</button>
     <button class="sw" data-shader="4" title="Thermal — infrared false-color spectral radiation">Thermal</button>
     <button class="sw" data-shader="5" title="Blueprint — cyanotype architectural grid & drafting glow">Blueprint</button>
+    <button class="sw" data-shader="6" title="Glitch — quantum VHS tape tear & chromatic drift">Glitch</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1109,6 +1110,13 @@ void main(){
     float lum = dot(col, vec3(0.299, 0.587, 0.114));
     vec3 cyan = vec3(0.08, 0.42, 0.95) * (0.35 + lum * 1.25) + vec3(0.65, 0.92, 1.0) * pow(lum, 2.8);
     col = cyan;
+  } else if (uShaderMat == 6) {
+    // Glitch: Quantum VHS tape tear & chromatic drift
+    float tear = step(0.96, fract(gl_FragCoord.y * 0.08 + uTime * 6.0));
+    float rgbShift = sin(gl_FragCoord.y * 0.4 + uTime * 8.0) * 0.25;
+    col.r = col.r * (1.0 + rgbShift) + tear * 0.35;
+    col.b = col.b * (1.0 - rgbShift);
+    col.g = col.g * 0.95;
   }
 
   float cov = a * vA;
@@ -2298,14 +2306,15 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
-const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint'];
+const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded', 'Holo', 'Thermal', 'Blueprint', 'Glitch'];
 const SHADER_DESC = [
   'authentic photographic & impasto medium',
   'phosphor CRT scanlines & matrix glow',
   'Klimt auric gold leaf & metallic glint',
   'iridescent prismatic thin-film interference',
   'infrared false-color spectral radiation',
-  'cyanotype architectural grid & drafting glow'
+  'cyanotype architectural grid & drafting glow',
+  'quantum VHS tape tear & chromatic drift'
 ];
 function setShaderMat(n){
   S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
