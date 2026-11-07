@@ -487,6 +487,7 @@
     <button class="sw" data-prim="12" title="Voxel — pseudo-3D isometric crystalline micro-cube">Voxel</button>
     <button class="sw" data-prim="13" title="Rune — ancient Norse & cybernetic runic vector sigil">Rune</button>
     <button class="sw" data-prim="14" title="Glyph — alien & cybernetic cipher ideogram">Glyph</button>
+    <button class="sw" data-prim="15" title="Delta — equilateral quantum prism triangle with inverted core">Delta</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1170,6 +1171,14 @@ void main(){
     float glyph = min(min(ring, bar * 2.5), min(notch, diag));
     a = smoothstep(0.12, 0.02, glyph);
     if (r < 0.22) { a = max(a, smoothstep(0.22, 0.12, r)); col += 0.2; }
+  } else if (uPrimitive == 15) {
+    // Delta: Equilateral quantum prism triangle with inverted core
+    vec2 tp = vec2(p.x, p.y + 0.2);
+    float dTri = max(abs(tp.x) * 1.73205 + tp.y - 0.75, -tp.y - 0.45);
+    vec2 ip = vec2(p.x, -(p.y - 0.05));
+    float dCore = max(abs(ip.x) * 1.73205 + ip.y - 0.35, -ip.y - 0.2);
+    a = smoothstep(0.06, 0.0, dTri) * smoothstep(-0.02, 0.05, dCore);
+    if (abs(dTri) < 0.08) col += 0.22;
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2393,7 +2402,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille', 'Voxel', 'Rune', 'Glyph'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus', 'Matrix', 'Digits', 'Braille', 'Voxel', 'Rune', 'Glyph', 'Delta'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2409,7 +2418,8 @@ const PRIM_DESC = [
   'tactile 2x3 punch-matrix embossed dot array',
   'pseudo-3D isometric crystalline micro-cube',
   'ancient Norse & cybernetic runic vector sigil',
-  'alien & cybernetic cipher ideogram'
+  'alien & cybernetic cipher ideogram',
+  'equilateral quantum prism triangle with inverted core'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
