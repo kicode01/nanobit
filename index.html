@@ -480,6 +480,7 @@
     <button class="sw" data-prim="5" title="Star — four-point quantum astroid sparkle">Star</button>
     <button class="sw" data-prim="6" title="Binary — floating 3D procedural 0s and 1s">Binary</button>
     <button class="sw" data-prim="7" title="ASCII — retro terminal micro-hash matrix (#)">ASCII</button>
+    <button class="sw" data-prim="8" title="Torus — glowing annular quantum ring halo">Torus</button>
   </div>
   <div class="chips shader" id="shaderRow">
     <span class="txl">Shader</span>
@@ -1056,6 +1057,12 @@ void main(){
     float hBars = min(abs(ap.y - 0.35), abs(ap.y + 0.35));
     float grid = min(max(vBars * 4.5, ap.y), max(hBars * 4.5, ap.x));
     a = smoothstep(0.92, 0.70, grid);
+  } else if (uPrimitive == 8) {
+    // Torus: Annular quantum ring halo
+    float r = length(p);
+    float ring = abs(r - 0.65);
+    a = smoothstep(0.28, 0.12, ring);
+    if (ring < 0.12) col += 0.12;
   } else {
     // Dust: Organic soft circular grains
     float r = length(p);
@@ -2256,7 +2263,7 @@ bindToggle('#tGrain','grain', v => {
   toast(v ? 'film grain on' : 'film grain off');
 });
 
-const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII'];
+const PRIM_NAMES = ['Dust', 'Bits', 'Hex', 'Prism', 'Cross', 'Star', 'Binary', 'ASCII', 'Torus'];
 const PRIM_DESC = [
   'organic soft circular grains',
   'digital square silicon voxels',
@@ -2265,7 +2272,8 @@ const PRIM_DESC = [
   'precision micro-reticle markers',
   'four-point quantum astroid sparkle',
   'floating 3D procedural 0s and 1s',
-  'retro terminal micro-hash matrix (#)'
+  'retro terminal micro-hash matrix (#)',
+  'glowing annular quantum ring halo'
 ];
 function setPrimitive(n){
   S.primitive = (n + PRIM_NAMES.length) % PRIM_NAMES.length;
