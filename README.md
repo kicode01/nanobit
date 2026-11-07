@@ -77,6 +77,24 @@ Toggle effortlessly between two physical presentation plates:
 ### 📷 Optical Camera & Depth of Field (DoF)
 A physically-modeled optical camera pipeline provides authentic focal blur, circle-of-confusion simulations, aperture radius dials, and chromatic bloom flares.
 
+### 🔲 Particle Morphology Primitives
+Instead of only soft circular dust, switch between six distinct 3D geometric primitives:
+* **`Dust`**: Organic soft circular grains with smooth Gaussian falloff.
+* **`Bits`**: Digital square silicon voxels with beveled pixel core highlights.
+* **`Hex`**: Quantum honeycomb nanotech lattice with 6-fold geometric symmetry.
+* **`Prism`**: Diamond crystalline facets with diagonal specular glints.
+* **`Cross`**: Precision digital micro-reticle markers.
+* **`Star`**: Four-point quantum astroid sparkle with high-intensity luminous core.
+
+### 🎨 Advanced Shader Materials
+Dynamically alter physical light transport, optics, and surface material response:
+* **`Natural`**: Authentic photographic and impasto pigment medium.
+* **`Cyber`**: Phosphor CRT raster scanlines with high-contrast cybernetic matrix glow.
+* **`Gilded`**: Gustav Klimt-inspired auric gold leaf with dynamic metallic specular glints.
+* **`Holo`**: Iridescent prismatic thin-film interference with continuous spectral dispersion.
+* **`Thermal`**: Thermodynamic infrared false-color spectral radiation.
+* **`Blueprint`**: Cyanotype architectural grid with luminous drafting lines.
+
 ### 💨 Interactive Aerodynamic Turbulence
 Press **`g`** or hold down mouse/touch to unleash fluid drag turbulence. Particles break away from the relief substrate, swirling into vortex clouds before gently precipitating back into registration.
 
@@ -110,6 +128,8 @@ Toggle diagnostic modes (**`d`**) to inspect:
 | **Next Specimen** | <kbd>Space</kbd> / `Turn` | Dissolves dust particles and gathers into the next artwork |
 | **Stir / Gust** | <kbd>G</kbd> / `Stir` | Click for an air gust; hold down pointer to continuously billow |
 | **Substrate Toggle** | <kbd>B</kbd> / `Plate` | Physical dissolve between Dark Obsidian Glass &amp; Rag Paper |
+| **Cycle Primitive** | <kbd>M</kbd> | Cycles particle primitives (*Dust* &rarr; *Bits* &rarr; *Hex* &rarr; *Prism* &rarr; *Cross* &rarr; *Star*) |
+| **Cycle Shader** | <kbd>K</kbd> | Cycles shader materials (*Natural* &rarr; *Cyber* &rarr; *Gilded* &rarr; *Holo* &rarr; *Thermal* &rarr; *Blueprint*) |
 | **Save 4K PNG** | <kbd>P</kbd> / `Save` | Exports high-resolution 4K canvas capture with transparency |
 | **Studio Panel** | <kbd>O</kbd> / Click Sliders | Opens fine optical tuning panel (Relief, Focus, Aperture, Bloom) |
 | **Toggle Chrome UI** | <kbd>H</kbd> | Hides all interface elements for pure museum contemplation |

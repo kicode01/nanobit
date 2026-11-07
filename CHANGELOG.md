@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-11-08
+
+### Added
+- **6 Particle Morphology Primitives**:
+  - `Dust`: Classic organic soft circular grains with Gaussian falloff.
+  - `Bits`: Digital square silicon voxels with beveled pixel core highlights.
+  - `Hex`: Quantum honeycomb nanotech lattice with 6-fold geometric symmetry.
+  - `Prism`: Diamond crystalline facets with diagonal specular glints.
+  - `Cross`: Precision digital micro-reticle markers.
+  - `Star`: Four-point quantum astroid sparkle with high-intensity luminous core.
+- **6 Advanced Shader Materials**:
+  - `Natural`: Authentic photographic and impasto pigment medium.
+  - `Cyber`: Phosphor CRT raster scanlines with high-contrast cybernetic matrix glow.
+  - `Gilded`: Gustav Klimt-inspired auric gold leaf with dynamic metallic specular glints.
+  - `Holo`: Iridescent prismatic thin-film interference with continuous spectral dispersion.
+  - `Thermal`: Thermodynamic infrared false-color spectral radiation.
+  - `Blueprint`: Cyanotype architectural grid with luminous drafting lines.
+- **Interactive UI & Keyboard Controls**:
+  - Dedicated `#primRow` and `#shaderRow` chip rows in the Optical Studio panel.
+  - Hotkey `<kbd>M</kbd>` to instantly cycle particle primitives.
+  - Hotkey `<kbd>K</kbd>` to instantly cycle shader materials.
+
+---
+
 ## [1.0.0] - 2026-10-30
 
 ### Added
