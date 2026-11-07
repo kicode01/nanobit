@@ -483,6 +483,7 @@
     <span class="txl">Shader</span>
     <button class="sw on" data-shader="0" title="Natural — authentic photographic & impasto medium">Natural</button>
     <button class="sw" data-shader="1" title="Cyber — phosphor CRT scanlines & matrix glow">Cyber</button>
+    <button class="sw" data-shader="2" title="Gilded — Klimt auric gold leaf & metallic glint">Gilded</button>
   </div>
   <div class="chips tx" id="txRow">
     <span class="txl">Turn of the page</span>
@@ -1041,6 +1042,12 @@ void main(){
     float scanline = 0.86 + 0.14 * sin(gl_FragCoord.y * 2.2 + uTime * 4.0);
     float lum = dot(col, vec3(0.299, 0.587, 0.114));
     col = vec3(lum * 0.15, lum * 1.30, lum * 0.65) * scanline;
+  } else if (uShaderMat == 2) {
+    // Gilded: Klimt auric gold leaf & metallic glint
+    float lum = dot(col, vec3(0.299, 0.587, 0.114));
+    float shimmer = 0.5 + 0.5 * sin(dot(gl_FragCoord.xy, vec2(0.04, 0.04)) + uTime * 2.2);
+    vec3 gold = vec3(1.0, 0.82, 0.38) * lum * 1.35 + vec3(0.3, 0.22, 0.05) * shimmer;
+    col = mix(col, gold, 0.78);
   }
 
   float cov = a * vA;
@@ -2226,10 +2233,11 @@ document.querySelectorAll('#primRow .sw').forEach(b => {
   });
 });
 
-const SHADER_NAMES = ['Natural', 'Cyber'];
+const SHADER_NAMES = ['Natural', 'Cyber', 'Gilded'];
 const SHADER_DESC = [
   'authentic photographic & impasto medium',
-  'phosphor CRT scanlines & matrix glow'
+  'phosphor CRT scanlines & matrix glow',
+  'Klimt auric gold leaf & metallic glint'
 ];
 function setShaderMat(n){
   S.shaderMat = (n + SHADER_NAMES.length) % SHADER_NAMES.length;
