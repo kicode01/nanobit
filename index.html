@@ -18,12 +18,15 @@
 <meta name="application-name" content="Nanobit">
 <meta name="msapplication-TileColor" content="#08080a">
 
-<!-- App Icons -->
-<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<!-- App Icons (PWA & iOS Safari Home Screen) -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im5iR29sZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNWRjYWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNkY2IzNzgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTQ3YTNlIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuYlRvcCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZGZiZjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWFlMmQyIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuYkxlZnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZjVlZGUwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RiY2VhNyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibmJEYXJrIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE4MWEyMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwOTBhMGQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwb2x5Z29uIHBvaW50cz0iMTIsMjAgMzIsMzIgMzIsNTYgMTIsNDQiIGZpbGw9InVybCgjbmJMZWZ0KSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMTIsMjAgMzIsMzIgMTIsNDQiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMyIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjIsMjYgMzIsNDQgMTIsNDQiIGZpbGw9IiNjZmJmYWIiIG9wYWNpdHk9IjAuNCIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsOCA1MiwyMCAzMiwzMiAxMiwyMCIgZmlsbD0idXJsKCNuYlRvcCkiLz4KICA8cG9seWdvbiBwb2ludHM9IjMyLDggNDIsMjYgMTIsMjAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNDUiLz4KICA8cG9seWdvbiBwb2ludHM9IjMyLDggNTIsMjAgNDIsMjYiIGZpbGw9IiNkZWQzYmYiIG9wYWNpdHk9IjAuNSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsMzIgNTIsMjAgNTIsNDQgMzIsNTYiIGZpbGw9InVybCgjbmJEYXJrKSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsMzIgNDIsNDAgMzIsNTYiIGZpbGw9IiMxNDE3MjAiIG9wYWNpdHk9IjAuODUiLz4KICA8bGluZSB4MT0iMzIiIHkxPSIzMiIgeDI9IjUyIiB5Mj0iNDQiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iMC42Ii8+CiAgPGxpbmUgeDE9IjMyIiB5MT0iNTYiIHgyPSI1MiIgeTI9IjMyIiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNCIvPgogIDxwb2x5bGluZSBwb2ludHM9IjMyLDggMTIsMjAgMTIsNDQgMzIsNTYgNTIsNDQiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjgiIHgyPSI0NCIgeTI9IjE1LjIiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuOCIvPgogIDxsaW5lIHgxPSI0NyIgeTE9IjE3IiB4Mj0iNTIiIHkyPSIyMCIgc3Ryb2tlPSJ1cmwoI25iR29sZCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSIxLjUgMS41Ii8+CiAgPGxpbmUgeDE9IjMyIiB5MT0iMzIiIHgyPSIxMiIgeTI9IjIwIiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICA8bGluZSB4MT0iMzIiIHkxPSIzMiIgeDI9IjMyIiB5Mj0iNTYiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjMyIiB4Mj0iNDYiIHkyPSIyMy42IiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICA8bGluZSB4MT0iNDgiIHkxPSIyMi40IiB4Mj0iNTIiIHkyPSIyMCIgc3Ryb2tlPSJ1cmwoI25iR29sZCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSIxLjUgMS41Ii8+CiAgPGxpbmUgeDE9IjEyIiB5MT0iMjAiIHgyPSIzMiIgeTI9IjQ0IiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNzUiLz4KICA8bGluZSB4MT0iMjIiIHkxPSIyNiIgeDI9IjEyIiB5Mj0iNDQiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iMC43NSIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjgiIHgyPSIzMiIgeTI9IjMyIiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNzUiLz4KICA8bGluZSB4MT0iMTIiIHkxPSIyMCIgeDI9IjUyIiB5Mj0iMjAiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iMC42Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxMiIgcj0iMS41IiBmaWxsPSIjZmRmYWYzIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxMiIgcj0iMi44IiBmaWxsPSIjZGNiMzc4IiBvcGFjaXR5PSIwLjQiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjE2IiByPSIxLjMiIGZpbGw9IiNmZGZhZjMiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjE2IiByPSIyLjUiIGZpbGw9IiNkY2IzNzgiIG9wYWNpdHk9IjAuMzUiLz4KICA8Y2lyY2xlIGN4PSI1MyIgY3k9IjIyIiByPSIxLjQiIGZpbGw9IiNmZmUyYjAiLz4KICA8Y2lyY2xlIGN4PSI1OSIgY3k9IjI0IiByPSIxLjEiIGZpbGw9IiNmZGZhZjMiLz4KICA8Y2lyY2xlIGN4PSI1NyIgY3k9IjI5IiByPSIxLjIiIGZpbGw9IiNkY2IzNzgiLz4KICA8Y2lyY2xlIGN4PSI2MSIgY3k9IjE5IiByPSIwLjkiIGZpbGw9IiNmZGZhZjMiLz4KICA8Y2lyY2xlIGN4PSI1NCIgY3k9IjgiIHI9IjEuMCIgZmlsbD0iI2ZmZTljNCIvPgogIDxjaXJjbGUgY3g9IjQ4IiBjeT0iNiIgcj0iMC44IiBmaWxsPSIjZGNiMzc4Ii8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSIxMyIgcj0iMC44IiBmaWxsPSIjZmRmYWYzIi8+CiAgPGNpcmNsZSBjeD0iNTUiIGN5PSIzNSIgcj0iMC45IiBmaWxsPSIjZGNiMzc4Ii8+CiAgPGNpcmNsZSBjeD0iNTgiIGN5PSIzOCIgcj0iMC43IiBmaWxsPSIjZmZlMmIwIi8+CiAgPGNpcmNsZSBjeD0iNjIiIGN5PSIyOCIgcj0iMC43IiBmaWxsPSIjZmRmYWYzIi8+CiAgPGNpcmNsZSBjeD0iNDYiIGN5PSIxMCIgcj0iMC42IiBmaWxsPSIjZGNiMzc4IiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSI1MSIgY3k9IjE3IiByPSIwLjYiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuOSIvPgogIDxjaXJjbGUgY3g9IjQ4IiBjeT0iMjEiIHI9IjAuNSIgZmlsbD0iI2RjYjM3OCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTQiIGN5PSIyNiIgcj0iMC42IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjExIiByPSIwLjUiIGZpbGw9IiNkY2IzNzgiIG9wYWNpdHk9IjAuNiIvPgogIDxjaXJjbGUgY3g9IjU5IiBjeT0iMTAiIHI9IjAuNSIgZmlsbD0iI2ZmZTJiMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNjMiIGN5PSIxNyIgcj0iMC41IiBmaWxsPSIjZGNiMzc4IiBvcGFjaXR5PSIwLjUiLz4KICA8Y2lyY2xlIGN4PSI1MiIgY3k9IjMxIiByPSIwLjUiIGZpbGw9IiNkY2IzNzgiIG9wYWNpdHk9IjAuNiIvPgogIDxjaXJjbGUgY3g9IjU2IiBjeT0iMzMiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC43Ii8+Cjwvc3ZnPg==">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <style>
   :root{
     --bg:#08080a;
@@ -348,65 +351,102 @@
 
   /* ---------- responsive & mobile layout ---------- */
   @media (max-width:768px){
-    #brand{padding:max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-left)) 10px}
-    #brand .wm{font-size:24px}
-    #meta{padding:max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 10px}
-    #meta .row{font-size:8px;line-height:1.8}
-    #scale{display:none}
-    #dock .transport button{padding:0 12px}
-    #rail{padding:0 8px;gap:5px;max-width:45vw}
-    .thumb{width:28px;height:28px;min-width:28px;max-width:28px;flex:0 0 28px}
-    #bPanel{padding:0 16px}
-    #panel{width:calc(100vw - 16px);bottom:calc(54px + env(safe-area-inset-bottom, 0px))}
-    .field{grid-template-columns:72px 1fr 42px;gap:12px;padding:8px 0}
-    input[type=range]{height:24px}
-    #hint{bottom:calc(60px + env(safe-area-inset-bottom, 0px));font-size:7.5px;letter-spacing:.14em;white-space:normal;width:82vw}
+    #scale{display:none !important}
+    #brand{padding:max(16px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-left)) 10px}
+    #brand .wm{font-size:26px}
+    #brand .by{font-size:9.5px;letter-spacing:.20em;margin-top:4px}
+    #brand #status{font-size:10.5px;letter-spacing:.16em;margin-top:4px;color:var(--fg);opacity:.9}
+    #meta{padding:max(16px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 10px}
+    #meta .row{font-size:10px;line-height:1.8}
+    #dock .transport button{padding:0 14px}
+    #dock button .lbl{font-size:10px;letter-spacing:.14em}
+    #dock button .key{display:none}
+    #panel{width:calc(100vw - 20px);bottom:calc(56px + env(safe-area-inset-bottom, 0px))}
+    .field{grid-template-columns:84px 1fr 44px;gap:12px;padding:9px 0}
+    .field .lbl{font-size:11px}
+    .field .val{font-size:11px}
+    input[type=range]{height:28px}
+    .sw{font-size:10px;padding:7px 12px 6px;min-height:30px}
+    .txl{font-size:9.5px}
   }
 
-  @media (max-width:540px){
-    #brand{padding:max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-left)) 6px}
-    #brand .wm{font-size:20px}
-    #brand .nano-cube-icon{width:18px;height:18px}
-    #brand .by{font-size:7px;letter-spacing:.18em;margin-top:3px}
-    #brand #status{font-size:7.5px;letter-spacing:.14em;margin-top:3px}
-    #meta{padding:max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 6px}
+  @media (max-width:640px){
+    /* Mobile phone viewport layout */
+    #brand{padding:max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-left)) 8px}
+    #brand .wm{font-size:22px}
+    #brand .nano-cube-icon{width:20px;height:20px}
+    #brand .by{font-size:9px;letter-spacing:.18em;margin-top:3px}
+    #brand #status{font-size:10px;letter-spacing:.14em;margin-top:3px}
+    #meta{padding:max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px}
     #meta .row:not(:first-child){display:none}
-    #meta .row{font-size:7.5px}
+    #meta .row{font-size:10px;font-weight:600}
 
+    /* Floating thumbnail picker above the dock */
+    #rail{
+      position:fixed;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:calc(56px + env(safe-area-inset-bottom, 0px));
+      height:40px;
+      max-width:min(420px, calc(100vw - 20px));
+      padding:0 10px;
+      gap:8px;
+      border-radius:20px;
+      background:var(--bar-glass);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border:1px solid var(--hair2);
+      box-shadow:0 6px 20px rgba(0,0,0,.6);
+      z-index:14;
+      display:flex;
+      align-items:center;
+      overflow-x:auto;
+      scrollbar-width:none;
+      -webkit-overflow-scrolling:touch;
+    }
+    body.panelopen #rail{display:none !important}
+    .thumb{width:28px;height:28px;min-width:28px;max-width:28px;flex:0 0 28px;border-radius:4px}
+
+    /* Bottom instrument dock */
     #dock{
-      height:calc(48px + env(safe-area-inset-bottom, 0px));
+      height:calc(50px + env(safe-area-inset-bottom, 0px));
       padding-bottom:env(safe-area-inset-bottom, 0px);
     }
-    #rail{
-      flex:0 0 auto;max-width:34vw;padding:0 6px;gap:4px;
-    }
-    .thumb{width:26px;height:26px;min-width:26px;max-width:26px;flex:0 0 26px}
-    #dock .transport{flex:1 1 0;min-width:0}
+    #dock .transport{flex:1 1 0;min-width:0;height:50px}
     #dock .transport button{
-      flex:1 1 0;min-width:0;padding:0 4px;justify-content:center;
+      flex:1 1 0;min-width:0;padding:0 4px;justify-content:center;height:50px;
     }
-    #dock button .lbl{font-size:8px;letter-spacing:.06em;white-space:nowrap}
+    #dock button .lbl{font-size:10.5px;font-weight:600;letter-spacing:.08em;white-space:nowrap}
     #dock button .key{display:none}
-    #bPanel{flex:0 0 auto;padding:0 12px}
+    #bPanel{flex:0 0 auto;padding:0 14px;height:50px}
+    #bPanel .lbl{font-size:10.5px;font-weight:600;letter-spacing:.08em}
     #bPanel .key{display:none}
 
+    /* Optical Studio Sheet */
     #panel{
-      bottom:calc(52px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(54px + env(safe-area-inset-bottom, 0px));
       width:calc(100vw - 12px);
-      border-radius:4px;
+      border-radius:6px;
+      max-height:calc(100vh - 70px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
     }
-    .field{grid-template-columns:64px 1fr 38px;gap:8px;padding:7px 0}
-    input[type=range]{height:28px}
-    input[type=range]::-webkit-slider-thumb{width:12px;height:12px;margin-top:-5px}
-    input[type=range]::-moz-range-thumb{width:12px;height:12px}
-    .chips{gap:5px;padding:8px 12px 10px}
-    .sw{font-size:7.5px;padding:6px 9px 5px;min-height:26px}
-    #hint{bottom:calc(56px + env(safe-area-inset-bottom, 0px));width:88vw}
+    #panel .ph{padding:14px 18px;font-size:11px}
+    #panel .rows{padding:4px 16px 12px}
+    .field{grid-template-columns:80px 1fr 42px;gap:10px;padding:9px 0}
+    .field .lbl{font-size:11px}
+    .field .val{font-size:11.5px}
+    input[type=range]{height:30px}
+    input[type=range]::-webkit-slider-thumb{width:14px;height:14px;margin-top:-6px}
+    input[type=range]::-moz-range-thumb{width:14px;height:14px}
+    .chips{gap:6px;padding:10px 14px 12px}
+    .sw{font-size:10px;letter-spacing:.10em;padding:7px 12px 6px;min-height:30px}
+    .txl{font-size:10px}
+    #hint{bottom:calc(102px + env(safe-area-inset-bottom, 0px));font-size:8.5px;width:90vw}
   }
 
-  @media (max-width:360px){
-    #rail{display:none}
-    #dock button .lbl{font-size:7.5px;letter-spacing:.02em}
+  @media (max-width:380px){
+    #brand .wm{font-size:20px}
+    #dock button .lbl{font-size:9.5px;letter-spacing:.04em}
+    .field{grid-template-columns:70px 1fr 38px;gap:8px}
   }
 </style>
 </head>
@@ -2897,8 +2937,8 @@ function frame(){
   if (S.autoT <= 0){ S.autoT = 60 + Math.random()*30; }
   // ink crossfade — responsive, silky smooth transition without black-out dip
   S.ink = lerp(S.ink, S.inkTarget, 1 - Math.pow(0.0003, dt));
-  if ((S.ink > 0.5) !== bodyInk){
-    bodyInk = S.ink > 0.5;
+  if ((S.inkTarget > 0.5) !== bodyInk){
+    bodyInk = S.inkTarget > 0.5;
     document.body.classList.toggle('ink', bodyInk);
   }
   S.fade = 1.0;
