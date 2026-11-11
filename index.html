@@ -2,8 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>nanobit</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>nanobit — 1,048,576 Particle Art Engine</title>
+<meta name="description" content="Interactive WebGL2 neural depth &amp; 1,048,576 particle simulation engine.">
+<meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ede7dc" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark light">
+
+<!-- PWA Manifest & App Identity -->
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nanobit">
+<meta name="application-name" content="Nanobit">
+<meta name="msapplication-TileColor" content="#08080a">
+
+<!-- App Icons -->
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im5iR29sZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNWRjYWYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNkY2IzNzgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTQ3YTNlIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuYlRvcCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZGZiZjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWFlMmQyIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuYkxlZnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZjVlZGUwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RiY2VhNyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibmJEYXJrIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE4MWEyMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwOTBhMGQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwb2x5Z29uIHBvaW50cz0iMTIsMjAgMzIsMzIgMzIsNTYgMTIsNDQiIGZpbGw9InVybCgjbmJMZWZ0KSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMTIsMjAgMzIsMzIgMTIsNDQiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMyIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjIsMjYgMzIsNDQgMTIsNDQiIGZpbGw9IiNjZmJmYWIiIG9wYWNpdHk9IjAuNCIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsOCA1MiwyMCAzMiwzMiAxMiwyMCIgZmlsbD0idXJsKCNuYlRvcCkiLz4KICA8cG9seWdvbiBwb2ludHM9IjMyLDggNDIsMjYgMTIsMjAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNDUiLz4KICA8cG9seWdvbiBwb2ludHM9IjMyLDggNTIsMjAgNDIsMjYiIGZpbGw9IiNkZWQzYmYiIG9wYWNpdHk9IjAuNSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsMzIgNTIsMjAgNTIsNDQgMzIsNTYiIGZpbGw9InVybCgjbmJEYXJrKSIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzIsMzIgNDIsNDAgMzIsNTYiIGZpbGw9IiMxNDE3MjAiIG9wYWNpdHk9IjAuODUiLz4KICA8bGluZSB4MT0iMzIiIHkxPSIzMiIgeDI9IjUyIiB5Mj0iNDQiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iMC42Ii8+CiAgPGxpbmUgeDE9IjMyIiB5MT0iNTYiIHgyPSI1MiIgeTI9IjMyIiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNCIvPgogIDxwb2x5bGluZSBwb2ludHM9IjMyLDggMTIsMjAgMTIsNDQgMzIsNTYgNTIsNDQiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjgiIHgyPSI0NCIgeTI9IjE1LjIiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuOCIvPgogIDxsaW5lIHgxPSI0NyIgeTE9IjE3IiB4Mj0iNTIiIHkyPSIyMCIgc3Ryb2tlPSJ1cmwoI25iR29sZCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSIxLjUgMS41Ii8+CiAgPGxpbmUgeDE9IjMyIiB5MT0iMzIiIHgyPSIxMiIgeTI9IjIwIiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICA8bGluZSB4MT0iMzIiIHkxPSIzMiIgeDI9IjMyIiB5Mj0iNTYiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjMyIiB4Mj0iNDYiIHkyPSIyMy42IiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICA8bGluZSB4MT0iNDgiIHkxPSIyMi40IiB4Mj0iNTIiIHkyPSIyMCIgc3Ryb2tlPSJ1cmwoI25iR29sZCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSIxLjUgMS41Ii8+CiAgPGxpbmUgeDE9IjEyIiB5MT0iMjAiIHgyPSIzMiIgeTI9IjQ0IiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNzUiLz4KICA8bGluZSB4MT0iMjIiIHkxPSIyNiIgeDI9IjEyIiB5Mj0iNDQiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iMC43NSIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjgiIHgyPSIzMiIgeTI9IjMyIiBzdHJva2U9InVybCgjbmJHb2xkKSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNzUiLz4KICA8bGluZSB4MT0iMTIiIHkxPSIyMCIgeDI9IjUyIiB5Mj0iMjAiIHN0cm9rZT0idXJsKCNuYkdvbGQpIiBzdHJva2Utd2lkdGg9IjEuMiIgb3BhY2l0eT0iMC42Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxMiIgcj0iMS41IiBmaWxsPSIjZmRmYWYzIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSIxMiIgcj0iMi44IiBmaWxsPSIjZGNiMzc4IiBvcGFjaXR5PSIwLjQiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjE2IiByPSIxLjMiIGZpbGw9IiNmZGZhZjMiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjE2IiByPSIyLjUiIGZpbGw9IiNkY2IzNzgiIG9wYWNpdHk9IjAuMzUiLz4KICA8Y2lyY2xlIGN4PSI1MyIgY3k9IjIyIiByPSIxLjQiIGZpbGw9IiNmZmUyYjAiLz4KICA8Y2lyY2xlIGN4PSI1OSIgY3k9IjI0IiByPSIxLjEiIGZpbGw9IiNmZGZhZjMiLz4KICA8Y2lyY2xlIGN4PSI1NyIgY3k9IjI5IiByPSIxLjIiIGZpbGw9IiNkY2IzNzgiLz4KICA8Y2lyY2xlIGN4PSI2MSIgY3k9IjE5IiByPSIwLjkiIGZpbGw9IiNmZGZhZjMiLz4KICA8Y2lyY2xlIGN4PSI1NCIgY3k9IjgiIHI9IjEuMCIgZmlsbD0iI2ZmZTljNCIvPgogIDxjaXJjbGUgY3g9IjQ4IiBjeT0iNiIgcj0iMC44IiBmaWxsPSIjZGNiMzc4Ii8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSIxMyIgcj0iMC44IiBmaWxsPSIjZmRmYWYzIi8+CiAgPGNpcmNsZSBjeD0iNTUiIGN5PSIzNSIgcj0iMC45IiBmaWxsPSIjZGNiMzc4Ii8+CiAgPGNpcmNsZSBjeD0iNTgiIGN5PSIzOCIgcj0iMC43IiBmaWxsPSIjZmZlMmIwIi8+CiAgPGNpcmNsZSBjeD0iNjIiIGN5PSIyOCIgcj0iMC43IiBmaWxsPSIjZmRmYWYzIi8+CiAgPGNpcmNsZSBjeD0iNDYiIGN5PSIxMCIgcj0iMC42IiBmaWxsPSIjZGNiMzc4IiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSI1MSIgY3k9IjE3IiByPSIwLjYiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuOSIvPgogIDxjaXJjbGUgY3g9IjQ4IiBjeT0iMjEiIHI9IjAuNSIgZmlsbD0iI2RjYjM3OCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNTQiIGN5PSIyNiIgcj0iMC42IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjExIiByPSIwLjUiIGZpbGw9IiNkY2IzNzgiIG9wYWNpdHk9IjAuNiIvPgogIDxjaXJjbGUgY3g9IjU5IiBjeT0iMTAiIHI9IjAuNSIgZmlsbD0iI2ZmZTJiMCIgb3BhY2l0eT0iMC43Ii8+CiAgPGNpcmNsZSBjeD0iNjMiIGN5PSIxNyIgcj0iMC41IiBmaWxsPSIjZGNiMzc4IiBvcGFjaXR5PSIwLjUiLz4KICA8Y2lyY2xlIGN4PSI1MiIgY3k9IjMxIiByPSIwLjUiIGZpbGw9IiNkY2IzNzgiIG9wYWNpdHk9IjAuNiIvPgogIDxjaXJjbGUgY3g9IjU2IiBjeT0iMzMiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC43Ii8+Cjwvc3ZnPg==">
 <style>
   :root{
@@ -57,14 +76,14 @@
     z-index:11;pointer-events:none;opacity:.8;
     transition:border-color .8s cubic-bezier(.4,0,.2,1);
   }
-  .trim.tl{top:12px;left:12px;border-top-width:1px;border-left-width:1px}
-  .trim.tr{top:12px;right:12px;border-top-width:1px;border-right-width:1px}
-  .trim.bl{bottom:12px;left:12px;border-bottom-width:1px;border-left-width:1px}
-  .trim.br{bottom:12px;right:12px;border-bottom-width:1px;border-right-width:1px}
+  .trim.tl{top:max(12px, env(safe-area-inset-top));left:max(12px, env(safe-area-inset-left));border-top-width:1px;border-left-width:1px}
+  .trim.tr{top:max(12px, env(safe-area-inset-top));right:max(12px, env(safe-area-inset-right));border-top-width:1px;border-right-width:1px}
+  .trim.bl{bottom:max(12px, calc(env(safe-area-inset-bottom) + 48px));left:max(12px, env(safe-area-inset-left));border-bottom-width:1px;border-left-width:1px}
+  .trim.br{bottom:max(12px, calc(env(safe-area-inset-bottom) + 48px));right:max(12px, env(safe-area-inset-right));border-bottom-width:1px;border-right-width:1px}
 
   /* ---------- brand: letterpressed into the margin ---------- */
   #brand{
-    top:0;left:0;padding:24px 28px;pointer-events:none;
+    top:0;left:0;padding:max(18px, calc(env(safe-area-inset-top) + 8px)) max(24px, env(safe-area-inset-left)) 14px;pointer-events:none;
     display:flex;flex-direction:column;align-items:flex-start;
   }
   #brand .brand-row{
@@ -102,7 +121,7 @@
   }
 
   /* ---------- readout: precision telemetry ---------- */
-  #meta{top:0;right:0;padding:24px 28px;text-align:right;pointer-events:none}
+  #meta{top:0;right:0;padding:max(18px, calc(env(safe-area-inset-top) + 8px)) max(24px, env(safe-area-inset-right)) 14px;text-align:right;pointer-events:none}
   #meta .row{
     font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;
     color:var(--dim);line-height:2.0;font-variant-numeric:tabular-nums;
@@ -136,7 +155,9 @@
 
   /* ---------- dock: precision darkroom instrument bar ---------- */
   #dock{
-    left:0;right:0;bottom:0;display:flex;align-items:stretch;height:46px;
+    left:0;right:0;bottom:0;display:flex;align-items:stretch;
+    height:calc(48px + env(safe-area-inset-bottom, 0px));
+    padding-bottom:env(safe-area-inset-bottom, 0px);
     border-top:1px solid var(--hair);
     background:var(--bar);
     z-index:15;
@@ -195,8 +216,10 @@
   /* ---------- settings: precision darkroom control sheet ---------- */
   #panel{
     left:50%;transform:translateX(-50%) translateY(10px);
-    bottom:54px;width:min(600px,calc(100vw - 32px));
-    max-height:calc(100vh - 72px);overflow-y:auto;overscroll-behavior:contain;
+    bottom:calc(54px + env(safe-area-inset-bottom, 0px));
+    width:min(600px,calc(100vw - 32px));
+    max-height:calc(100vh - 68px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
     border:1px solid var(--hair);
     background:var(--panel-bg);
     opacity:0;pointer-events:none;
@@ -323,38 +346,67 @@
     background:#08080a;color:#888;font-size:11px;letter-spacing:.1em;
   }
 
-  /* ---------- responsive ---------- */
-  @media (max-width:760px){
-    #brand{padding:18px 20px}
-    #brand .wm{font-size:26px}
-    #meta{padding:20px 20px}
-    #meta .row{font-size:8px}
+  /* ---------- responsive & mobile layout ---------- */
+  @media (max-width:768px){
+    #brand{padding:max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-left)) 10px}
+    #brand .wm{font-size:24px}
+    #meta{padding:max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 10px}
+    #meta .row{font-size:8px;line-height:1.8}
     #scale{display:none}
     #dock .transport button{padding:0 12px}
-    #rail{padding:0 8px;gap:5px}
-    .thumb{width:26px;height:26px;min-width:26px;max-width:26px;flex:0 0 26px}
-    #bPanel{padding:0 14px}
-    #panel{width:calc(100vw - 20px);bottom:52px}
-    .field{grid-template-columns:68px 1fr 40px;gap:10px}
-    #hint{bottom:58px;font-size:7px;letter-spacing:.14em;white-space:normal;width:76vw}
+    #rail{padding:0 8px;gap:5px;max-width:45vw}
+    .thumb{width:28px;height:28px;min-width:28px;max-width:28px;flex:0 0 28px}
+    #bPanel{padding:0 16px}
+    #panel{width:calc(100vw - 16px);bottom:calc(54px + env(safe-area-inset-bottom, 0px))}
+    .field{grid-template-columns:72px 1fr 42px;gap:12px;padding:8px 0}
+    input[type=range]{height:24px}
+    #hint{bottom:calc(60px + env(safe-area-inset-bottom, 0px));font-size:7.5px;letter-spacing:.14em;white-space:normal;width:82vw}
   }
-  @media (max-width:430px){
-    #brand{padding:14px 16px}
+
+  @media (max-width:540px){
+    #brand{padding:max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-left)) 6px}
     #brand .wm{font-size:20px}
     #brand .nano-cube-icon{width:18px;height:18px}
-    #brand .by{font-size:7px;letter-spacing:.18em;margin-top:4px}
-    #brand #status{display:none}
-    #meta{display:none}
-    #rail{display:none}
-    #dock .transport{flex:1 1 0;min-width:0;height:42px}
-    #dock .transport button{flex:1 1 0;min-width:0;padding:0 4px;justify-content:center;height:42px}
-    #dock button .lbl{font-size:7.5px;letter-spacing:.04em;white-space:nowrap}
+    #brand .by{font-size:7px;letter-spacing:.18em;margin-top:3px}
+    #brand #status{font-size:7.5px;letter-spacing:.14em;margin-top:3px}
+    #meta{padding:max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 6px}
+    #meta .row:not(:first-child){display:none}
+    #meta .row{font-size:7.5px}
+
+    #dock{
+      height:calc(48px + env(safe-area-inset-bottom, 0px));
+      padding-bottom:env(safe-area-inset-bottom, 0px);
+    }
+    #rail{
+      flex:0 0 auto;max-width:34vw;padding:0 6px;gap:4px;
+    }
+    .thumb{width:26px;height:26px;min-width:26px;max-width:26px;flex:0 0 26px}
+    #dock .transport{flex:1 1 0;min-width:0}
+    #dock .transport button{
+      flex:1 1 0;min-width:0;padding:0 4px;justify-content:center;
+    }
+    #dock button .lbl{font-size:8px;letter-spacing:.06em;white-space:nowrap}
     #dock button .key{display:none}
-    #bPanel{flex:0 0 auto;padding:0 10px;height:42px}
-    #panel{bottom:48px}
-    #hint{bottom:54px}
-    .field{grid-template-columns:58px 1fr 34px;gap:8px;padding:8px 0}
-    .sw{font-size:7px;padding:5px 8px 4px}
+    #bPanel{flex:0 0 auto;padding:0 12px}
+    #bPanel .key{display:none}
+
+    #panel{
+      bottom:calc(52px + env(safe-area-inset-bottom, 0px));
+      width:calc(100vw - 12px);
+      border-radius:4px;
+    }
+    .field{grid-template-columns:64px 1fr 38px;gap:8px;padding:7px 0}
+    input[type=range]{height:28px}
+    input[type=range]::-webkit-slider-thumb{width:12px;height:12px;margin-top:-5px}
+    input[type=range]::-moz-range-thumb{width:12px;height:12px}
+    .chips{gap:5px;padding:8px 12px 10px}
+    .sw{font-size:7.5px;padding:6px 9px 5px;min-height:26px}
+    #hint{bottom:calc(56px + env(safe-area-inset-bottom, 0px));width:88vw}
+  }
+
+  @media (max-width:360px){
+    #rail{display:none}
+    #dock button .lbl{font-size:7.5px;letter-spacing:.02em}
   }
 </style>
 </head>
@@ -453,7 +505,11 @@
 <div id="hint" class="ui" aria-live="polite"></div>
 
 <section id="panel" class="ui">
-  <div class="ph"><span>settings</span><span>drag &middot; wheel &middot; space</span></div>
+  <div class="ph">
+    <span>settings</span>
+    <button id="bInstallPWA" class="sw" style="display:none;font-size:7.5px;padding:3px 8px;border-color:var(--accent);color:var(--accent);border-radius:3px;cursor:pointer;">Install App</button>
+    <span>drag &middot; touch &middot; space</span>
+  </div>
   <div class="rows">
     <label class="field"><span class="lbl">Relief</span><input type="range" id="sRelief" min="0" max="100" value="34"><span class="val" id="vRelief">0.34</span></label>
     <label class="field"><span class="lbl">Focus</span><input type="range" id="sFocus" min="0" max="100" value="62"><span class="val" id="vFocus">0.62</span></label>
@@ -2604,6 +2660,20 @@ $('#bSave').onclick = () => {
   toast('saved');
 };
 $('#file').onchange = e => { ingestFiles(e.target.files); e.target.value = ''; };
+const bInst = $('#bInstallPWA');
+if (bInst) {
+  bInst.onclick = async () => {
+    if (window.deferredPWAInstall) {
+      window.deferredPWAInstall.prompt();
+      const choice = await window.deferredPWAInstall.userChoice;
+      if (choice && choice.outcome === 'accepted') {
+        bInst.style.display = 'none';
+        toast('app installed');
+      }
+      window.deferredPWAInstall = null;
+    }
+  };
+}
 
 addEventListener('keydown', e => {
   if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -2641,19 +2711,46 @@ addEventListener('keyup', e => {
   if (e.key.toLowerCase() === 'g') stopStir();
 });
 
-/* ---- pointer: orbit, zoom, push ---- */
-let dragging = false, lastX = 0, lastY = 0, moved = 0, pinch = 0;
+/* ---- pointer: orbit, multi-touch pinch zoom, double-tap reset ---- */
+let dragging = false, lastX = 0, lastY = 0, moved = 0, tapTime = 0, lastTapTime = 0;
+const activePointers = new Map();
+let initialPinchDist = 0, initialZoom = 1;
+
 canvas.addEventListener('pointerdown', e => {
-  if (e.button !== 0) return;
-  dragging = true; lastX = e.clientX; lastY = e.clientY; moved = 0;
-  canvas.setPointerCapture(e.pointerId);
+  if (e.button !== 0 && e.pointerType === 'mouse') return;
+  activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (activePointers.size === 1) {
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    moved = 0;
+    tapTime = performance.now();
+  } else if (activePointers.size === 2) {
+    dragging = false;
+    const pts = Array.from(activePointers.values());
+    initialPinchDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+    initialZoom = cam.tzoom;
+  }
+  try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
 });
+
 canvas.addEventListener('pointermove', e => {
+  if (activePointers.has(e.pointerId)) {
+    activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  }
+
   const nx = (e.clientX / W) * 2 - 1;
   const ny = 1 - (e.clientY / H) * 2;
   S.brush.x = lerp(S.brush.x, nx, 0.35);
   S.brush.y = lerp(S.brush.y, ny, 0.35);
-  if (dragging){
+
+  if (activePointers.size === 2 && initialPinchDist > 0) {
+    const pts = Array.from(activePointers.values());
+    const curDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+    const scaleRatio = initialPinchDist / Math.max(curDist, 10);
+    cam.tzoom = clamp(initialZoom * scaleRatio, 0.42, 2.0);
+    moved += 10;
+  } else if (dragging) {
     const dx = e.clientX - lastX, dy = e.clientY - lastY;
     lastX = e.clientX; lastY = e.clientY;
     moved += Math.abs(dx) + Math.abs(dy);
@@ -2664,8 +2761,35 @@ canvas.addEventListener('pointermove', e => {
     S.brush.amt = Math.min(0.075, S.brush.amt + sp*0.012);
   }
 });
-canvas.addEventListener('pointerup', () => { dragging = false; });
-canvas.addEventListener('pointercancel', () => { dragging = false; });
+
+const onPointerEnd = e => {
+  if (activePointers.has(e.pointerId)) {
+    activePointers.delete(e.pointerId);
+  }
+  if (activePointers.size === 0) {
+    const now = performance.now();
+    if (moved < 8 && (now - tapTime) < 320) {
+      if (now - lastTapTime < 320) {
+        cam.taz = 0; cam.tel = 0; cam.tzoom = 1.0;
+        toast('camera reset');
+        lastTapTime = 0;
+      } else {
+        lastTapTime = now;
+      }
+    }
+    dragging = false;
+    initialPinchDist = 0;
+  } else if (activePointers.size === 1) {
+    const remaining = Array.from(activePointers.values())[0];
+    lastX = remaining.x;
+    lastY = remaining.y;
+    dragging = true;
+    initialPinchDist = 0;
+  }
+};
+
+canvas.addEventListener('pointerup', onPointerEnd);
+canvas.addEventListener('pointercancel', onPointerEnd);
 canvas.addEventListener('wheel', e => {
   e.preventDefault();
   cam.tzoom = clamp(cam.tzoom * (1 + Math.sign(e.deltaY)*0.07), 0.42, 2.0);
@@ -3131,6 +3255,26 @@ boot();
   window.BIT.requestDepth = window.LOESS.requestDepth;
   setTimeout(start, 3000);
 })();
+
+// PWA Service Worker Registration & App Install Hook
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => {
+      console.warn('[PWA] Service worker registration ignored:', err);
+    });
+  });
+}
+window.deferredPWAInstall = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  window.deferredPWAInstall = e;
+  const btn = document.getElementById('bInstallPWA');
+  if (btn) btn.style.display = 'inline-flex';
+});
+window.addEventListener('appinstalled', () => {
+  window.deferredPWAInstall = null;
+  console.log('[PWA] Nanobit installed successfully');
+});
 </script>
 
 </body>
