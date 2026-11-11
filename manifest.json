@@ -1,6 +1,6 @@
 {
-  "name": "Nanobit — 1M Particle Art Engine",
-  "short_name": "Nanobit",
+  "name": "nanobit",
+  "short_name": "nanobit",
   "description": "Interactive WebGL2 neural depth & 1,048,576 particle simulation engine",
   "start_url": "./",
   "scope": "./",
