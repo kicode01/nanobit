@@ -10,12 +10,17 @@ dist/
 *.zip
 *.tar.gz
 
-# Root and test screenshot artifacts (whitelist assets/)
+# Root and test screenshot artifacts (whitelist assets/ and root PWA icons)
 *.png
 *.jpg
 *.jpeg
 *.gif
 !assets/**
+!apple-touch-icon.png
+!apple-touch-icon-precomposed.png
+!icon-192.png
+!icon-512.png
+!favicon.ico
 
 # Temporary and backup source files
 *.backup.html
