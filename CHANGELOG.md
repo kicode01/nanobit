@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-11-11
+
+### Added
+- **Progressive Web App (PWA) Engine**:
+  - Full Web App Manifest (`manifest.json`) supporting standalone display mode and custom branding.
+  - Multi-resolution adaptive app icons: 192×192, 512×512, maskable 512×512, and 180×180 Apple Touch Icon.
+  - Service Worker (`sw.js`) with intelligent stale-while-revalidate offline precaching.
+  - Interactive "Install App" hook integration inside the Optical Studio panel.
+- **Mobile Responsive Ergonomics & Touch Gestures**:
+  - Fluid multi-touch pinch-to-zoom gesture on the WebGL2 canvas.
+  - Double-tap gesture for instant camera alignment and zoom normalization.
+  - Full hardware safe-area inset support (`env(safe-area-inset-*)`) for iOS Dynamic Island and Android system bars.
+  - Touch-optimized slider hitzones and tactile chip controls across 320px–768px viewports.
+  - Responsive thumbnail rail preserving quick masterpiece switching on mobile phones.
+
+---
+
 ## [1.2.0] - 2026-11-08
 
 ### Added

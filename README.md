@@ -112,6 +112,19 @@ Dynamically alter physical light transport, optics, and surface material respons
 * **`Cosmic`**: Deep space H-alpha nebula starlight and interstellar dust fields.
 * **`Aero`**: Supersonic schlieren aerodynamic shock fronts and optical refraction gradients.
 
+### 📱 Mobile Responsive & Multi-Touch Gestures
+Engineered for edge-to-edge immersion across all mobile phones, tablets, and desktop displays:
+* **Multi-Touch Pinch-to-Zoom**: Fluid two-finger pinch gesture scaling camera focal depth and microscopic particle zoom with zero jitter.
+* **Double-Tap Reset**: Double-tap anywhere on the canvas to instantly reset camera orientation and zoom back to neutral front-facing registration.
+* **Hardware Safe-Area Insets**: Full native support for iOS Dynamic Island, iPhone notches, and Android system navigation bars (`env(safe-area-inset-*)`).
+* **Touch-Optimized Instrumentation**: Slider touch hitzones, haptic responsive switches, and high-density thumbnail rails designed for thumb ergonomics.
+
+### 🚀 Progressive Web App (PWA) & Offline Mode
+Install Nanobit directly to your home screen or desktop application dock as a standalone app:
+* **Web App Manifest**: Full standalone PWA specification with custom golden isometric voxel app icons (192×192, 512×512, maskable adaptive icon, and Apple Touch Icon).
+* **Service Worker Caching**: Intelligent stale-while-revalidate offline architecture caching shaders, UI instruments, and pre-baked art topologies.
+* **Instant Native Launch**: Runs in chromeless standalone window mode (`display: standalone`) with custom theme color palettes (`#08080a` obsidian / `#ede7dc` cotton rag paper).
+
 ### 💨 Interactive Aerodynamic Turbulence
 Press **`g`** or hold down mouse/touch to unleash fluid drag turbulence. Particles break away from the relief substrate, swirling into vortex clouds before gently precipitating back into registration.
 
@@ -153,6 +166,8 @@ Toggle diagnostic modes (**`d`**) to inspect:
 | **Diagnostic Mode** | <kbd>D</kbd> | Cycles optical debug layers (normals, occlusion, depth buffer) |
 | **Pull Focal Plane** | <kbd>↑</kbd> / <kbd>↓</kbd> | Dynamically shifts optical camera focus forward and backward |
 | **Orbit Camera** | `Mouse / Touch Drag` | Free-camera 3D spatial rotation around specimen volume |
+| **Pinch to Zoom** | `2-Finger Pinch` | Smooth multi-touch optical zoom in and out on mobile &amp; trackpads |
+| **Reset View** | `Double Tap` | Instantly resets camera rotation and zoom back to neutral center |
 | **Upload Custom Image** | `Drag & Drop` | Drop any JPEG/PNG into the browser tab for instant 3D neural relief |
 
 ---
